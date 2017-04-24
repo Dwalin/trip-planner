@@ -24,42 +24,42 @@
 	<a class="mj-link" data-bind="click: logOut" href="#">Log out</a>
 </div>
 
-<div class="cal-popup__overlay js-popup js-popup__note js-hidden" data-bind="popup">
+<div class="trip-popup__overlay js-popup js-popup__note js-hidden" data-bind="popup">
 
-	<div class="cal-popup__black js-close"></div>
+	<div class="trip-popup__black js-close"></div>
 
-	<div class="cal-popup__box">
+	<div class="trip-popup__box">
 
-		<div class="cal-popup__close"></div>
+		<div class="trip-popup__close"></div>
 
-		<div class="cal-popup__title">Save a memory</div>
-		<div class="cal-popup__title _sub">The note you write will be saved on your calendar.</div>
+		<div class="trip-popup__title">Save a memory</div>
+		<div class="trip-popup__title _sub">The note you write will be saved on your calendar.</div>
 
-		<form class="cal-popup__form">
+		<form class="trip-popup__form">
 
-			<textarea class="cal-popup__input js-input _area" data-bind="value: noteForm.note, note" placeholder="What happened?">
+			<textarea class="trip-popup__input js-input _area" data-bind="value: noteForm.note, note" placeholder="What happened?">
 			</textarea>
 
-			<input type="hidden" class="cal-popup__input" data-bind="value: noteForm.day, datepicker" placeholder="When?">
+			<input type="hidden" class="trip-popup__input" data-bind="value: noteForm.day, datepicker" placeholder="When?">
 
-			<button data-bind="click: addNote" class="cal-popup__button mj-button js-close">
+			<button data-bind="click: addNote" class="trip-popup__button mj-button js-close">
 				Save it!
 			</button>
 
 		</form>
 
-		<!--<div class="cal-popup__title">Add a counter</div>-->
-		<!--<div class="cal-popup__title _sub">Save numeric data on calendar and we'll make nice graphs %)</div>-->
+		<!--<div class="trip-popup__title">Add a counter</div>-->
+		<!--<div class="trip-popup__title _sub">Save numeric data on calendar and we'll make nice graphs %)</div>-->
 
-		<!--<form class="cal-popup__form">-->
+		<!--<form class="trip-popup__form">-->
 
-			<!--<div class="cal-popup__inputWrap ui-front">-->
-				<!--<input class="cal-popup__input js-input js-counter__name"  data-bind="value: counterForm.name, counterAutocomplete, counterData: counters" placeholder="Name your counter">-->
+			<!--<div class="trip-popup__inputWrap ui-front">-->
+				<!--<input class="trip-popup__input js-input js-counter__name"  data-bind="value: counterForm.name, counterAutocomplete, counterData: counters" placeholder="Name your counter">-->
 			<!--</div>-->
 
-			<!--<input class="cal-popup__input js-input"  data-bind="value: counterForm.value" placeholder="Kilometers, minutes, kcal etc.">-->
+			<!--<input class="trip-popup__input js-input"  data-bind="value: counterForm.value" placeholder="Kilometers, minutes, kcal etc.">-->
 
-			<!--<button data-bind="click: addCounter" class="cal-popup__button mj-button js-close">-->
+			<!--<button data-bind="click: addCounter" class="trip-popup__button mj-button js-close">-->
 				<!--Gogo!-->
 			<!--</button>-->
 
@@ -74,22 +74,22 @@
 
 <!-- ko ifnot: loggedIn -->
 
-<div class="cal-popup__overlay">
-	<div class="cal-popup__black"></div>
+<div class="trip-popup__overlay">
+	<div class="trip-popup__black"></div>
 
-	<div class="cal-popup__box _login">
+	<div class="trip-popup__box _login">
 
 		<div class="mj-login__logo"></div>
 
-		<h1 class="cal-popup__title">Trip planner</h1>
+		<h1 class="trip-popup__title">Trip planner</h1>
 
-		<p class="cal-popup__title _sub">
+		<p class="trip-popup__title _sub">
 			The best way to plan your trip.
 		</p>
 
-		<form class="cal-popup__form" data-bind="submit: login" class="mj-login__form">
-			<input class="cal-popup__input" data-bind="value: loginForm.login, css: validation" placeholder="email">
-			<input class="cal-popup__input" type="password" data-bind="value: loginForm.password" placeholder="password">
+		<form class="trip-popup__form" data-bind="submit: login" class="mj-login__form">
+			<input class="trip-popup__input" data-bind="value: loginForm.login, css: validation" placeholder="email">
+			<input class="trip-popup__input" type="password" data-bind="value: loginForm.password" placeholder="password">
 
 			<button data-bind="click: login, css: validation" class="mj-login__button mj-button">
 				<!-- ko if: showRegister -->

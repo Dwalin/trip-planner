@@ -1457,10 +1457,10 @@ body * {
 .ui-datepicker-next {
   order: 3;
 }
-.cal-popup {
+.trip-popup {
   transition: visibility 0s, opacity 0.25s ease-in-out;
 }
-.cal-popup__overlay {
+.trip-popup__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -1468,10 +1468,10 @@ body * {
   width: 100%;
   height: 100%;
 }
-.cal-popup__overlay .mj-link {
+.trip-popup__overlay .mj-link {
   font-size: 110%;
 }
-.cal-popup__black {
+.trip-popup__black {
   top: 0;
   left: 0;
   z-index: 1100;
@@ -1479,7 +1479,7 @@ body * {
   height: 100%;
   background-color: rgba(0,0,0,0.85);
 }
-.cal-popup__box {
+.trip-popup__box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1491,28 +1491,28 @@ body * {
   transition: all 0.25s ease-in-out;
   border-radius: 2px;
 }
-.cal-popup__box._login {
+.trip-popup__box._login {
   max-width: 400px;
   min-width: 400px;
 }
-.cal-popup__box._login .cal-popup__input {
+.trip-popup__box._login .trip-popup__input {
   font-size: 120%;
 }
-.cal-popup__title {
+.trip-popup__title {
   font-size: 160%;
   text-align: center;
   margin-bottom: 20px;
 }
-.cal-popup__title._sub {
+.trip-popup__title._sub {
   font-size: 90%;
   opacity: 0.5;
 }
-.cal-popup__form {
+.trip-popup__form {
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
 }
-.cal-popup__input {
+.trip-popup__input {
   height: 50px;
   line-height: 50px;
   padding-left: 10px;
@@ -1524,25 +1524,25 @@ body * {
   border-radius: 0;
   outline: 2px solid transparent;
 }
-.cal-popup__inputWrap {
+.trip-popup__inputWrap {
   position: relative;
 }
-.cal-popup__inputWrap input {
+.trip-popup__inputWrap input {
   width: 100%;
 }
-.cal-popup__input:focus {
+.trip-popup__input:focus {
   background-color: rgba(0,0,0,0.05);
   border-bottom: 2px solid #50c8f0;
 /*outline: 2px solid alpha($c-main, .25);*/
 }
-.cal-popup__input._area {
+.trip-popup__input._area {
   border: 2px solid #dcdcdc;
   max-width: 100%;
   height: 100px;
   line-height: 25px;
   resize: none;
 }
-.cal-popup__input._area:focus {
+.trip-popup__input._area:focus {
   background-color: rgba(0,0,0,0.05);
   border-bottom: 2px solid #50c8f0;
 /*outline: 2px solid alpha($c-main, .25);*/
@@ -1551,7 +1551,7 @@ body * {
   visibility: hidden;
   opacity: 0;
 }
-.js-hidden .cal-popup__box {
+.js-hidden .trip-popup__box {
   transform: translateX(-50%) translateY(-45%);
   opacity: 0;
 }
