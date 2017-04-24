@@ -1,7 +1,7 @@
 {
-  "name": "round-calendar",
+  "name": "Trip planner",
   "version": "0.0.8",
-  "description": "A round calendar to make your life chronicle.",
+  "description": "Trip planner.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp"

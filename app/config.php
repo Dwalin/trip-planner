@@ -2,8 +2,8 @@
 return new \Phalcon\Config(array(
                                'database' => array(
                                    "host"     => "kryzhani.mysql.ukraine.com.ua",
-                                   "username" => "kryzhani_task",
-                                   "password" => "2htq8lph",
+                                   "username" => "kryzhani_travel",
+                                   "password" => "7yur6ak7",
                                    "dbname"   => "kryzhani_task",
                                    "options" => array(
                                        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
