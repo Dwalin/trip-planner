@@ -1,0 +1,16 @@
+#<IfModule mod_rewrite.c>
+#    RewriteEngine on
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule  ^$ app/    [L]
+#    RewriteRule  ((?s).*) app/$1 [L]
+#</IfModule>
+
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} api/(.*)$
+    RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|gif|png|css|zip|doc|php|js|pdf|txt|ico|djvu)$
+	RewriteRule  ((?s).*) app/$1 [L]
+</IfModule>
