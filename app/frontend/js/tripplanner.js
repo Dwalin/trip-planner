@@ -7,8 +7,16 @@ var ko          = require('knockout');
 
 $(function() {
 
+	var timer = (new Date()).getTime();
 
-	var tripVM = function(data) {
+	function log(text) {
+		console.log( -(timer - (new Date()).getTime()), text);
+		return false;
+	}
+
+
+	var interfaceVM = function(data) {
+		log("Started");
 
 		var self = this;
 
@@ -19,15 +27,12 @@ $(function() {
 		self.loggedIn = ko.observable(true);
 		self.currentUser = ko.observable("");
 		self.currentUserId = ko.observable("");
-
 		self.showLogin    = ko.observable(true);
 		self.showRegister = ko.observable(false);
-
 		self.loginForm = {
 			login: ko.observable(""),
 			password: ko.observable("")
 		};
-
 		self.validation = ko.computed(function(){
 
 			if (self.loginForm.login() != "") {
@@ -58,25 +63,6 @@ $(function() {
 			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			return re.test(email);
 		};
-
-		self.refresh = function() {
-
-			$.ajax({
-				dataType: "json",
-				data: "",
-				url: "./api/users/current",
-				success: function(data) {
-					self.loggedIn(true);
-					self.renderNotes();
-				},
-				error: function(data) {
-					//console.log("Refresh: Not logged in.");
-					self.loggedIn(false);
-				}
-			});
-
-		};
-
 		self.login = function() {
 
 			var data = {
@@ -95,7 +81,7 @@ $(function() {
 
 					$.ajax({
 						type: "POST",
-						url: "./api/users/register",
+						url: "http://travel.done.report/api/users/register",
 						data: data,
 						dataType: "JSON",
 						success: function(data) {
@@ -107,7 +93,6 @@ $(function() {
 								dataType: "JSON",
 								success: function(data) {
 									self.loggedIn(true);
-									self.renderNotes();
 								},
 								error: function(data) {
 								}
@@ -121,18 +106,21 @@ $(function() {
 
 				} else {
 
-					//console.log("Logging in");
-
 					$.ajax({
 						type: "POST",
-						url: "./api/users/login",
+						url: "http://travel.done.report/api/users/login",
 						data: data,
 						dataType: "JSON",
 						success: function(data) {
 							self.loggedIn(true);
-							self.renderNotes();
+							self.refresh();
+							log("Successfull login");
+							log(data);
+
 						},
 						error: function(data) {
+							log("Unsuccessfull login");
+							log(data);
 						}
 
 					});
@@ -145,7 +133,7 @@ $(function() {
 		self.logOut = function() {
 			$.ajax({
 				type: "GET",
-				url: "./api/users/logout",
+				url: "http://travel.done.report/api/users/logout",
 				dataType: "JSON",
 				success: function(data) {
 					self.loggedIn(false);
@@ -156,11 +144,115 @@ $(function() {
 
 			});
 		};
+
+		self.refresh = function() {
+			log("Refresh");
+
+			$.ajax({
+				dataType: "json",
+				data: "",
+				url: "http://travel.done.report/api/users/current",
+				success: function(data) {
+					log("Logged in.");
+					self.loggedIn(true);
+				},
+				error: function(data) {
+					log("Not logged in.");
+					self.loggedIn(false);
+				}
+			});
+
+		};
+
+		// !-----------------------------------------------------------
+		// !-----------------------------------------------------------
+
+
+		// !-----------------------------------------------------------
+		// Trip part
+
+		self.trip = ko.observable();
+
+		self.getTrips = function(){
+			log("Getting trips");
+
+			$.ajax({
+				dataType: "json",
+				data: "",
+				url: "http://travel.done.report/trip/",
+				success: function(data) {
+					console.log("Getting trip data.");
+					self.trip = new tripVM(data);
+				},
+				error: function(data) {
+				}
+			});
+		};
+
 		// !-----------------------------------------------------------
 		// !-----------------------------------------------------------
 
 		self.refresh();
+
+
 	};
+
+
+	var tripVM = function(data) {
+		var self = this;
+
+		self.id = ko.observable('');
+		self.title = ko.observable('Sample trip');
+		self.duration = ko.observable();
+		self.stops = ko.observableArray();
+
+		render("http://travel.done.report/api/trip/" + self.id() + "/", stopVM, self.stops);
+
+
+	};
+
+
+	var stopVM = function(data) {
+		var self = this;
+
+		self.id           = ko.observable(data.id);
+		self.name         = ko.observable(data.name);
+		self.location     = ko.observable(data.location);
+		self.days         = ko.observableArray();
+
+		self.days = ko.observableArray();
+
+		render("http://travel.done.report/api/stop/" + self.id() + "/", dayVM, self.days);
+
+
+	};
+
+	var dayVM = function(data) {
+		var self = this;
+
+		self.id        = ko.observable(data.id);
+		self.title     = ko.observable(data.title);
+		self.number    = ko.observable(data.number);
+		self.date      = ko.observable(data.date);
+		self.complete  = ko.observable(data.completed);
+
+		self.plans     = ko.observableArray();
+
+		render("http://travel.done.report/api/trip/stop/" + self.number() + "/", planVM, self.plans);
+
+
+	};
+
+	var planVM = function(data) {
+		var self = this;
+
+		self.name = ko.observable(data.name);
+		self.complete = ko.observable(data.complete);
+
+		self.completeTimestamp = ko.observable();
+
+	};
+
 
 	ko.bindingHandlers.popup = {
 		init: function(element, valueAccessor) {
@@ -171,10 +263,28 @@ $(function() {
 	};
 	
 
-	ko.applyBindings( new tripVM() );
+	ko.applyBindings( new interfaceVM() );
 	
 
 });
+
+var render = function(url, viewModel, property) {
+
+	$.ajax({
+		dataType: "json",
+		data: "",
+		url: url,
+		success: function(data) {
+			data.forEach(function(item){
+				property.push(new viewModel(item) );
+			});
+		},
+		error: function(data) {
+
+		}
+	});
+
+};
 },{"d3":2,"jquery":5,"jquery-ui-browserify":4,"knockout":6}],2:[function(require,module,exports){
 // https://d3js.org Version 4.8.0. Copyright 2017 Mike Bostock.
 (function (global, factory) {
