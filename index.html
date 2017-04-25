@@ -23,53 +23,6 @@
 <div class="mj-logout">
 	<a class="mj-link" data-bind="click: logOut" href="#">Log out</a>
 </div>
-
-<div class="trip-popup__overlay js-popup js-popup__note js-hidden" data-bind="popup">
-
-	<div class="trip-popup__black js-close"></div>
-
-	<div class="trip-popup__box">
-
-		<div class="trip-popup__close"></div>
-
-		<div class="trip-popup__title">Save a memory</div>
-		<div class="trip-popup__title _sub">The note you write will be saved on your calendar.</div>
-
-		<form class="trip-popup__form">
-
-			<textarea class="trip-popup__input js-input _area" data-bind="value: noteForm.note, note" placeholder="What happened?">
-			</textarea>
-
-			<input type="hidden" class="trip-popup__input" data-bind="value: noteForm.day, datepicker" placeholder="When?">
-
-			<button data-bind="click: addNote" class="trip-popup__button mj-button js-close">
-				Save it!
-			</button>
-
-		</form>
-
-		<!--<div class="trip-popup__title">Add a counter</div>-->
-		<!--<div class="trip-popup__title _sub">Save numeric data on calendar and we'll make nice graphs %)</div>-->
-
-		<!--<form class="trip-popup__form">-->
-
-			<!--<div class="trip-popup__inputWrap ui-front">-->
-				<!--<input class="trip-popup__input js-input js-counter__name"  data-bind="value: counterForm.name, counterAutocomplete, counterData: counters" placeholder="Name your counter">-->
-			<!--</div>-->
-
-			<!--<input class="trip-popup__input js-input"  data-bind="value: counterForm.value" placeholder="Kilometers, minutes, kcal etc.">-->
-
-			<!--<button data-bind="click: addCounter" class="trip-popup__button mj-button js-close">-->
-				<!--Gogo!-->
-			<!--</button>-->
-
-		<!--</form>-->
-
-	</div>
-
-</div>
-
-
 <!-- /ko -->
 
 <!-- ko ifnot: loggedIn -->
@@ -124,10 +77,8 @@
 <!-- /ko -->
 
 
-<div class="mj-calendar__wrapper">
 
 
-</div>
 
 </body>
 
