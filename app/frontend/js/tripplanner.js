@@ -212,6 +212,10 @@ $(function() {
 		self.duration = ko.observable();
 		self.stops    = ko.observableArray();
 
+		self.updateName = function(){
+			log(self.title);
+		};
+
 		render("http://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops);
 
 
@@ -272,10 +276,6 @@ $(function() {
 	
 
 	ko.applyBindings( new interfaceVM() );
-
-	interfaceVM.trip.title.subscribe(function(value) {
-		log(value);
-	});
 	
 
 });
