@@ -288,7 +288,7 @@ class IndexController extends RestController {
             $response->setStatusCode(201, "Success");
             $response->setJsonContent(
                 array(
-                    'status' => 'Stop succesfully created.',
+                    'status' => 'Trip name successfully changed.',
                     'data'   => $trip->toArray()
                 )
             );
