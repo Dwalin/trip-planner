@@ -232,6 +232,8 @@ class IndexController extends RestController {
         }
 
 
+        return $response;
+
     }
 
 
