@@ -250,7 +250,7 @@ class IndexController extends RestController {
             $response->setStatusCode(201, "Success");
             $response->setJsonContent(
                 array(
-                    'status' => 'OK',
+                    'status' => $stops->count() . ' stops were found.',
                     'data'   => $stops->toArray()
                 )
             );
