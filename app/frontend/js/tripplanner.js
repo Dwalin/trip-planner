@@ -207,10 +207,10 @@ $(function() {
 
 		log(data);
 
-		self.id = ko.observable(data.id);
-		self.title = ko.observable(data.title);
+		self.id       = data.id;
+		self.title    = ko.observable(data.title);
 		self.duration = ko.observable();
-		self.stops = ko.observableArray();
+		self.stops    = ko.observableArray();
 
 		render("http://travel.done.report/api/trip/" + self.id() + "/stops/", stopVM, self.stops);
 
