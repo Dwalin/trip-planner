@@ -212,6 +212,23 @@ $(function() {
 		self.duration = ko.observable();
 		self.stops    = ko.observableArray();
 
+		self.addNewStop = function() {
+			$.ajax({
+				dataType: "json",
+				type: "PUT",
+				data: "",
+				url: "http://travel.done.report/api/stop/",
+				success: function(data) {
+					log("Created new stop");
+					log(data);
+				},
+				error: function(data) {
+					log("Could not create a new stop");
+					log(data);
+				}
+			});
+		};
+
 		self.updateName = function() {
 
 			$.ajax({
@@ -266,11 +283,11 @@ $(function() {
 				},
 				url: "http://travel.done.report/api/stop/",
 				success: function(data) {
-					log("Updated trip Title.");
+					log("Updated a stop.");
 					log(data);
 				},
 				error: function(data) {
-					log("Could not update trip Title");
+					log("Could not update a stop");
 					log(data);
 				}
 			});
