@@ -279,9 +279,17 @@ var render = function(url, viewModel, property) {
 		data: "",
 		url: url,
 		success: function(data) {
-			data.forEach(function(item){
-				property.push(new viewModel(item) );
-			});
+			log("Render started.");
+			log(data);
+
+			if (data.isArray()) {
+				data.forEach(function(item){
+					property.push(new viewModel(item) );
+				});
+			} else {
+
+			}
+
 		},
 		error: function(data) {
 
