@@ -250,31 +250,34 @@ class IndexController extends RestController {
                 )
             );
 
-            return $response;
-        }
-
-        $stops = $trip->Stop;
-
-        if ($stops) {
-
-            $response->setStatusCode(201, "Success");
-            $response->setJsonContent(
-                array(
-                    'status' => 'OK',
-                    'data'   => $stops->toArray()
-                )
-            );
-
         } else {
 
-            $response->setStatusCode(404, "Not Found");
-            $response->setJsonContent(
-                array(
-                    'status' => 'Not found'
-                )
-            );
+            $stops = $trip->Stop;
+
+            if ($stops) {
+
+                $response->setStatusCode(201, "Success");
+                $response->setJsonContent(
+                    array(
+                        'status' => 'OK',
+                        'data'   => $stops->toArray()
+                    )
+                );
+
+            } else {
+
+                $response->setStatusCode(404, "Not Found");
+                $response->setJsonContent(
+                    array(
+                        'status' => 'Not found'
+                    )
+                );
+
+            }
 
         }
+
+
 
         return $response;
 
