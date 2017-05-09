@@ -183,9 +183,10 @@ $(function() {
 				success: function(data) {
 					console.log("Getting trip data.");
 					console.log(data);
-					self.trip = new tripVM(data['0']);
+					self.trip = new tripVM(data[0]);
 				},
 				error: function(data) {
+					console.log("Could not get trip data.");
 				}
 			});
 		};
