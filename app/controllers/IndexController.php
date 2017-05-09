@@ -7,8 +7,6 @@ use Phalcon\Mvc\Controller;
 use Phalcon\Http\Response;
 use Phalcon\Http\Request;
 
-use Trip\Models\Users;
-
 
 class IndexController extends RestController {
 
@@ -209,10 +207,10 @@ class IndexController extends RestController {
         $userId = $this->session->get("user")['id'];
         $user = Users::findFirst($userId);
 
-        $trip = $user->getTrip();
+//        $trip = $user->getTrip();
 //        $trip = $user->Trip;
 
-        die(var_dump($trip->toArray()));
+        die(var_dump($user->toArray()));
 
         if ($trip) {
 
