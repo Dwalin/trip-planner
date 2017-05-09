@@ -373,7 +373,7 @@ class IndexController extends RestController {
 
         $response = new Response();
 
-        die($this->request);
+        die($this->request0>get());
 
         $id = $this->request->get("id");
         $stop = Stop::findFirst($id);
