@@ -363,7 +363,7 @@ $(function() {
 			autocomplete.addListener('place_changed', function(){
 				var place = autocomplete.getPlace();
 				console.log(place);
-				$(element).val(place.name);
+				$(element).val(place.formatted_address);
 			});
 
 		}
