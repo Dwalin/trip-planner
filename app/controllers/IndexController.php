@@ -239,40 +239,29 @@ class IndexController extends RestController {
 
         $response = new Response();
 
-        $trip = Trip::findFirst($id);
+        $stops = Stop::find([
+            "trip_id = :id:",
+            "bind" => [
+                "id" => $id
+            ]
+        ]);
 
-        if (!$trip) {
+        if ($stops) {
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'data'   => $stops->toArray()
+                )
+            );
+        } else {
             $response->setStatusCode(404, "Not Found");
             $response->setJsonContent(
                 array(
                     'status' => 'Not found'
                 )
             );
-        } else {
-            $stops = $trip->Stop;
-
-            if ($stops) {
-                $response->setStatusCode(201, "Success");
-                $response->setJsonContent(
-                    array(
-                        'status' => 'OK',
-                        'data'   => $stops->toArray()
-                    )
-                );
-            } else {
-                $response->setStatusCode(404, "Not Found");
-                $response->setJsonContent(
-                    array(
-                        'status' => 'Not found'
-                    )
-                );
-            }
-
         }
-
-
-
-
 
         return $response;
 
