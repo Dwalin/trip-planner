@@ -23,10 +23,6 @@ class IndexController extends RestController {
 
         $user = Users::findFirstByEmail($email);
 
-        //print_r($password);
-        //print_r($user->password);
-        //print_r($user->password);
-
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
                 $response->setStatusCode(201, "Success");

@@ -23,14 +23,13 @@ class RestController extends Controller {
 //                $log->action = $this->dispatcher->getActionName();
 //                $log->url = "";
 //                $log->request = $this->dispatcher->getParams();
-//
+
 //                if ($log->save() == false) {
 //                    foreach ($log->getMessages() as $message) {
 //                        echo $message, "\n";
 //                    }
 //                }
 
-                //print_r($name);
             } else {
                 $this->response->setStatusCode(201, "Success");
                 $this->response->setJsonContent(
