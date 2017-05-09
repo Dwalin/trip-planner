@@ -1,5 +1,7 @@
 <?php
-//namespace RestApi\Api\Models;
+
+namespace Trip\Models;
+
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Message;
 

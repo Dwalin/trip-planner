@@ -7,6 +7,8 @@ use Phalcon\Mvc\Controller;
 use Phalcon\Http\Response;
 use Phalcon\Http\Request;
 
+use Trip\Models\Users;
+
 
 class IndexController extends RestController {
 
