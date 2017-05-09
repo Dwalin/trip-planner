@@ -240,6 +240,19 @@ class IndexController extends RestController {
         $response = new Response();
 
         $trip = Trip::findFirst($id);
+
+        if (!$trip) {
+
+            $this->$response->setStatusCode(404, "Not Found");
+            $this->$response->setJsonContent(
+                array(
+                    'status' => 'Not found'
+                )
+            );
+
+            return $response;
+        }
+
         $stops = $trip->Stop;
 
         if ($stops) {
