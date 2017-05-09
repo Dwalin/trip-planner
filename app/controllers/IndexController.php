@@ -272,7 +272,7 @@ class IndexController extends RestController {
 
         $response = new Response();
 
-        $id       = $this->request->getPut("id");
+        $id        = $this->request->getPut("id");
         $title     = $this->request->getPut("title");
 
         if ($id) {
@@ -289,7 +289,7 @@ class IndexController extends RestController {
             $response->setJsonContent(
                 array(
                     'status' => 'Trip name successfully changed.',
-                    'data'   => $trip->toArray()
+                    'data'   => $trip->toArray()[title]
                 )
             );
 
