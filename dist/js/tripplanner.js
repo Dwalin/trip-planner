@@ -362,7 +362,7 @@ $(function() {
 			autocomplete.addListener('place_changed', function(){
 				var place = autocomplete.getPlace();
 				console.log("Added a place: " + place);
-				$(element).val(place);
+				//$(element).val(place);
 			});
 
 		}
