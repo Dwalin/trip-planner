@@ -270,7 +270,7 @@ class IndexController extends RestController {
     /**
      * @Put("/api/trip/{id:[0-9]+}/stops/")
      */
-    public function stopsAction($id) {
+    public function stopsWriteAction($id) {
 
         $response = new Response();
 
