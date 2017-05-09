@@ -182,7 +182,7 @@ $(function() {
 				success: function(data) {
 					console.log("Getting trip data.");
 					console.log(data);
-					self.trip = new tripVM(data);
+					self.trip = new tripVM(data[0]);
 				},
 				error: function(data) {
 				}
@@ -193,6 +193,7 @@ $(function() {
 		// !-----------------------------------------------------------
 
 		self.refresh();
+		self.getTrips();
 
 
 	};
