@@ -115,6 +115,131 @@ class IndexController extends RestController {
     }
 
     /**
+     * @Get("/api/users/")
+     */
+    public function usersAction() {
+
+        $response = new Response();
+
+        $users = Users::find(array(
+            "columns" => "id, email"
+                             ));
+        $users->rewind();
+
+        while ($users->valid()) {
+            $user[] = $users->current()->toArray();
+            $users->next();
+        }
+
+        $response->setStatusCode(201, "Success");
+        $response->setJsonContent(
+            array(
+                'status' => 'OK',
+                'action' => 'found',
+                'data'   => $user
+            )
+        );
+
+        return $response;
+
+    }
+
+    /**
+     * @Post("/api/users/register")
+     */
+    public function registerAction() {
+        $response = new Response();
+        $request = $this->request->getPost();
+
+        $user = new Users();
+
+//        $user->login        = $this->request->getPost('login');
+//        $user->name        = $this->request->getPost('name');
+        $user->email       = $this->request->getPost('email');
+        $user->password    = $this->security->hash($this->request->getPost('password'));
+
+        $calendar = new Calendar();
+        $calendar -> name = $this->request->getPost('email');
+
+        $userbinding = new Userbinding();
+        $userbinding->Users = $user;
+        $userbinding->Calendar = $calendar;
+
+        if ($userbinding->create() == true) {
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'action' => 'created',
+                    'data'   => $user
+                )
+            );
+        } else {
+            // Change the HTTP status
+            $response->setStatusCode(409, "Conflict");
+
+            // Send errors to the client
+            $errors = array();
+            foreach ($userbinding->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
+        }
+
+        return $response;
+
+    }
+
+
+    /**
+     * @Get("/api/trip/")
+     */
+    public function tripAction() {
+
+        $userId = $this->session->get("user")['id'];
+        $user = Users::findFirst($userId);
+
+        $trip = $user->getTrip();
+
+        if ($trip) {
+
+            $this->$response->setStatusCode(201, "Success");
+            $this->$response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'data'   => $trip->toArray()
+                )
+            );
+
+        } else {
+
+            $this->$response->setStatusCode(404, "Not Found");
+            $this->$response->setJsonContent(
+                array(
+                    'status' => 'Not found'
+                )
+            );
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+    /**
      * @Get("/api/calendar/")
      */
     public function calendarAction() {
@@ -175,36 +300,6 @@ class IndexController extends RestController {
     }
 
     /**
-     * @Get("/api/users/")
-     */
-    public function usersAction() {
-
-        $response = new Response();
-
-        $users = Users::find(array(
-            "columns" => "id, email"
-                             ));
-        $users->rewind();
-
-        while ($users->valid()) {
-            $user[] = $users->current()->toArray();
-            $users->next();
-        }
-
-        $response->setStatusCode(201, "Success");
-        $response->setJsonContent(
-            array(
-                'status' => 'OK',
-                'action' => 'found',
-                'data'   => $user
-            )
-        );
-
-        return $response;
-
-    }
-
-    /**
      * @Post("/api/calendar/")
      */
     public function noteAddAction() {
@@ -255,262 +350,6 @@ class IndexController extends RestController {
                     'status'   => 'ERROR',
                     'messages' => $errors,
                     'calendar' => $calendar->toArray()
-                )
-            );
-        }
-
-        return $response;
-
-    }
-
-    /**
-     * @Post("/api/calendar/counter/")
-     */
-    public function noteCounterAction() {
-
-        $response = new Response();
-        $request = $this->request->getPost();
-
-        $userId = $this->session->get("user")['id'];
-        $user = Users::findFirst($userId);
-
-        $calendar = $user->getCalendar();
-
-        $note = Notes::findFirst([
-            "day = " . $this->request->getPost('day') . " AND calendar_id = " . $calendar->toArray()[0]["id"]
-        ]);
-
-        if ($note) {
-            $note -> counter       = $this->request->getPost('counter');
-        } else {
-            $note = new Notes();
-            $note -> day           = $this->request->getPost('day');
-            $note -> counter       = $this->request->getPost('counter');
-            $note -> calendar_id   = $calendar->toArray()[0]["id"];
-        }
-
-        if ($note->save() == true) {
-            $response->setStatusCode(201, "Success");
-            $response->setJsonContent(
-                array(
-                    'status' => 'OK',
-                    'action' => 'Added a counter',
-                    'data'   => $note
-                )
-            );
-        } else {
-            // Change the HTTP status
-            $response->setStatusCode(409, "Conflict");
-
-            // Send errors to the client
-            $errors = array();
-            foreach ($note->getMessages() as $message) {
-                $errors[] = $message->getMessage();
-            }
-
-            $response->setJsonContent(
-                array(
-                    'status'   => 'ERROR',
-                    'messages' => $errors,
-                    'calendar' => $calendar->toArray()
-                )
-            );
-        }
-
-        return $response;
-
-    }
-
-    /**
-     * @Post("/api/users/register")
-     */
-    public function registerAction() {
-        $response = new Response();
-        $request = $this->request->getPost();
-
-        $user = new Users();
-
-//        $user->login        = $this->request->getPost('login');
-//        $user->name        = $this->request->getPost('name');
-        $user->email       = $this->request->getPost('email');
-        $user->password    = $this->security->hash($this->request->getPost('password'));
-
-        $calendar = new Calendar();
-        $calendar -> name = $this->request->getPost('email');
-
-        $userbinding = new Userbinding();
-        $userbinding->Users = $user;
-        $userbinding->Calendar = $calendar;
-
-        if ($userbinding->create() == true) {
-            $response->setStatusCode(201, "Success");
-            $response->setJsonContent(
-                array(
-                    'status' => 'OK',
-                    'action' => 'created',
-                    'data'   => $user
-                )
-            );
-        } else {
-            // Change the HTTP status
-            $response->setStatusCode(409, "Conflict");
-
-            // Send errors to the client
-            $errors = array();
-            foreach ($userbinding->getMessages() as $message) {
-                $errors[] = $message->getMessage();
-            }
-
-            $response->setJsonContent(
-                array(
-                    'status'   => 'ERROR',
-                    'messages' => $errors
-                )
-            );
-        }
-
-        return $response;
-
-    }
-
-
-
-    // Counters
-
-    /**
-     * @Get("/api/calendar/counters/")
-     */
-    public function countersGetAction() {
-
-        $response = new Response();
-
-        $userId = $this->session->get("user")['id'];
-        $user = Users::findFirst($userId);
-        $calendar = $user->getCalendar();
-
-        $counters = Counters::find([
-            "calendar_id = :calendar_id:",
-            "bind" => [
-                "calendar_id" => $calendar->toArray()[0]["id"]
-            ],
-            "order" => "day DESC"
-        ]);
-
-        $counters = $counters -> toArray();
-
-        if ($counters) {
-            $response->setStatusCode(201, "Success");
-
-            $processed = array();
-
-            foreach ($counters as $key => $counter) {
-                $type = Countertypes::findFirst($counter["type_id"]);
-                $counters[$key]["type"] = $type->toArray()["name"];
-                unset($counters[$key]["type_id"]);
-                unset($counters[$key]["created"]);
-                unset($counters[$key]["modified"]);
-                unset($counters[$key]["calendar_id"]);
-                unset($counters[$key]["id"]);
-
-                $processed[$counters[$key]["type"]][] = array(
-                    "day" => $counters[$key]["day"],
-                    "value" => $counters[$key]["value"]
-                );
-
-
-            }
-
-            $response->setJsonContent($processed);
-
-        } else {
-            $response->setStatusCode(404, "Not found");
-            $response->setJsonContent(
-                array(
-                    'status'     => 'Not found'
-                )
-            );
-        }
-
-
-        return $response;
-    }
-
-
-    /**
-     * @Post("/api/calendar/counters/")
-     */
-    public function countersAddAction() {
-
-        $response = new Response();
-        $request = $this->request->getPost();
-
-        $userId = $this->session->get("user")['id'];
-        $user = Users::findFirst($userId);
-
-        $calendar = $user->getCalendar();
-
-
-        $type = Countertypes::findFirstByName($this->request->getPost('name'));
-
-        if ($type) {
-            // If such type exists...
-            $counter = Counters::findFirst([
-                "type_id = :type_id: AND day = :day: AND calendar_id = :calendar_id:",
-                "bind" => [
-                    "type_id"     => $type->toArray()[0]["id"],
-                    "day"         => $request['day'],
-                    "calendar_id" => $calendar->toArray()[0]["id"]
-                ]
-            ]);
-        } else {
-            // Or we need to create one
-            $type = new Countertypes();
-            $type -> name             = $this->request->getPost('name');
-        }
-
-
-        if ($counter) {
-            // Updating counter value...
-            $counter -> value         = $this->request->getPost('value');
-        } else {
-            // Or creating new one
-            $counter = new Counters();
-            $counter -> day           = $request['day'];
-            $counter -> value         = $request['value'];
-            $counter -> calendar_id   = $calendar->toArray()[0]["id"];
-
-            $counter -> Countertypes  = $type;
-        }
-
-//        die(var_dump($counter->save() ));
-
-        if ($counter->save() == true) {
-
-            $response->setStatusCode(201, "Success");
-            $response->setJsonContent(
-                array(
-                    'status' => 'OK',
-                    'action' => 'created',
-                    'data'   => $counter -> toArray()
-                )
-            );
-
-        } else {
-
-            $response->setStatusCode(409, "Conflict");
-
-            $errors = array();
-            foreach ($counter->getMessages() as $message) {
-                $errors[] = $message->getMessage();
-            }
-
-            $response->setJsonContent(
-                array(
-                    'status'   => 'ERROR',
-                    'messages' => $errors,
-                    'calendar' => $calendar->toArray(),
-                    'type'     => $type->toArray(),
-                    'counter'  => $counter->toArray()
                 )
             );
         }

@@ -15,8 +15,8 @@ class Users extends Model
         $this->hasManyToMany(
             "id",
             "Userbinding",
-            "user_id", "calendar_id",
-            "Calendar",
+            "user_id", "trip_id",
+            "Trip",
             "id"
         );
     }

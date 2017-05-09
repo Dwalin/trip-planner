@@ -4,19 +4,29 @@
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Message;
 
-class Counters extends Model
+class Day extends Model
 {
-    public  $id;
-    public  $calendar_id;
-    public  $day;
-    public  $type_id;
-    public  $value;
+    public $id;
+    public $name;
+    public $date;
     private $created;
     private $modified;
 
     public function initialize() {
-        $this->belongsTo("calendar_id", "Calendar", "id");
-        $this->belongsTo("type_id", "Countertypes", "id");
+
+
+        $this->belongsTo(
+            "stop_id",
+            "Stop",
+            "id"
+        );
+
+        $this->hasMany(
+            "id",
+            "Plan",
+            "plan_id"
+        );
+
     }
 
 

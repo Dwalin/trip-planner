@@ -10,7 +10,7 @@ class Userbinding extends Model
     public $calendar_id;
 
     public function initialize() {
-        $this->belongsTo("calendar_id", "Calendar", "id");
+        $this->belongsTo("trip_id", "Trip", "id");
         $this->belongsTo("user_id", "Users", "id");
     }
 
