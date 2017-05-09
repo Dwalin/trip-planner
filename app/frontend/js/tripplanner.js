@@ -253,6 +253,7 @@ $(function() {
 		};
 		self.deleteStop = function(item) {
 
+			console.log("Deleting a stop");
 			console.log(item);
 
 			$.ajax({
