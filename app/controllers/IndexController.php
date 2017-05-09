@@ -309,24 +309,6 @@ class IndexController extends RestController {
             );
         }
 
-
-        if ($stops->count() > 0) {
-            $response->setStatusCode(201, "Success");
-            $response->setJsonContent(
-                array(
-                    'status' => $stops->count() . ' stops were found.',
-                    'data'   => $stops->toArray()
-                )
-            );
-        } else {
-            $response->setStatusCode(404, "Not Found");
-            $response->setJsonContent(
-                array(
-                    'status' => 'No stops were found.'
-                )
-            );
-        }
-
         return $response;
 
     }

@@ -232,7 +232,7 @@ $(function() {
 					log(data);
 				}
 			});
-		}; 
+		};
 
 		render("http://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops);
 
