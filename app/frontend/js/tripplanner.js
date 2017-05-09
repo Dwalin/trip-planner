@@ -308,7 +308,7 @@ var render = function(url, viewModel, property) {
 		data: "",
 		url: url,
 		success: function(data) {
-			console.log("Render started.");
+			console.log(property + " render started.");
 			console.log(data.data);
 
 			if (Array.isArray(data)) {
