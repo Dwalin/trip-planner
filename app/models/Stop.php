@@ -9,6 +9,7 @@ class Stop extends Model
     public $id;
     public $name;
     public $location;
+    public $trip_id;
     private $created;
     private $modified;
 

@@ -321,15 +321,17 @@ class IndexController extends RestController {
 
         $response = new Response();
 
-        $id        = $this->request->getPut("id");
-        $name     = $this->request->getPut("name");
+        $id           = $this->request->getPut("id");
+        $name         = $this->request->getPut("name");
         $location     = $this->request->getPut("location");
+        $trip_id      = $this->request->getPut("trip_id");
 
         if ($id) {
             $stop = Stop::findFirst($id);
             $stop->name = $name;
         } else {
             $stop = new Stop();
+            $stop->trip_id = $trip_id;
         }
 
         if ($stop->save() != false) {
