@@ -233,7 +233,7 @@ $(function() {
 			});
 		};
 
-		render("http://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops);
+		render("http://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops, "Stops");
 
 
 	};
@@ -300,14 +300,14 @@ $(function() {
 
 });
 
-var render = function(url, viewModel, property) {
+var render = function(url, viewModel, property, comment) {
 
 	$.ajax({
 		dataType: "json",
 		data: "",
 		url: url,
 		success: function(data) {
-			console.log(property + " render started.");
+			console.log(comment + " render started.");
 			console.log(data.data);
 
 			if (Array.isArray(data)) {
