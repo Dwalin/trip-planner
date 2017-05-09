@@ -310,9 +310,11 @@ var render = function(url, viewModel, property, comment) {
 			console.log(comment + " render started.");
 
 			if (Array.isArray(data.data)) {
-				data.data.forEach(function(item){
+				data.data.forEach(function(item) {
 					property.push( new viewModel(item) );
 				});
+
+				console.log(property);
 			} else {
 				console.log(comment + ": something went wrong.");
 			}
