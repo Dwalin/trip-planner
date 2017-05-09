@@ -249,7 +249,7 @@ class IndexController extends RestController {
                 )
             );
         } else {
-            $stops = $trip->Stop
+            $stops = $trip->Stop;
 
             die($stops);
 
