@@ -251,17 +251,17 @@ $(function() {
 				}
 			});
 		};
-		self.deleteStop = function($item) {
+		self.deleteStop = function(item) {
 
-			console.log($item);
+			console.log(item);
 
 			$.ajax({
 				dataType: "json",
 				type: "DELETE",
-				url: "http://travel.done.report/api/stop/" + $item.id,
+				url: "http://travel.done.report/api/stop/" + item.id,
 				success: function(data) {
 					log("Deleted a stop.");
-					self.stops.remove($item);
+					self.stops.remove(item);
 
 				},
 				error: function(data) {
