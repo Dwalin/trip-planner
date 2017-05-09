@@ -181,6 +181,7 @@ $(function() {
 				url: "http://travel.done.report/trip/",
 				success: function(data) {
 					console.log("Getting trip data.");
+					console.log(data);
 					self.trip = new tripVM(data);
 				},
 				error: function(data) {

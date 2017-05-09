@@ -267,6 +267,74 @@ class IndexController extends RestController {
 
     }
 
+    /**
+     * @Put("/api/trip/{id:[0-9]+}/stops/")
+     */
+    public function stopsAction($id) {
+
+        $response = new Response();
+
+        $id       = $this->request->getPut("id");
+        $name     = $this->request->getPut("name");
+        $location = $this->request->getPut("location");
+
+        if ($id) {
+            $stop = Stop::findFirst($id);
+        } else {
+            $stop = new Stop();
+        }
+
+        $stop->name     = $name;
+        $stop->location = $location;
+
+        if ($stop->save() != false) {
+
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => 'Stop succesfully created.',
+                    'data'   => $stop->toArray()
+                )
+            );
+
+        } else {
+            $response->setStatusCode(409, "Conflict");
+
+            $errors = array();
+            foreach ($stop->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                array(
+                    'status'   => 'Could not create a stop.',
+                    'messages' => $errors
+                )
+            );
+        }
+
+
+        if ($stops->count() > 0) {
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => $stops->count() . ' stops were found.',
+                    'data'   => $stops->toArray()
+                )
+            );
+        } else {
+            $response->setStatusCode(404, "Not Found");
+            $response->setJsonContent(
+                array(
+                    'status' => 'No stops were found.'
+                )
+            );
+        }
+
+        return $response;
+
+    }
+
 
 
 
