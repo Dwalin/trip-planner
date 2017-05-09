@@ -329,6 +329,7 @@ class IndexController extends RestController {
         if ($id) {
             $stop = Stop::findFirst($id);
             $stop->name = $name;
+            $stop->location = $location;
         } else {
             $stop = new Stop();
             $stop->trip_id = $trip_id;
