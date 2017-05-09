@@ -235,7 +235,7 @@ class IndexController extends RestController {
     /**
      * @Get("/api/trip/{id:[0-9]+}/stops/")
      */
-    public function stopsAction() {
+    public function stopsAction($id) {
 
         $response = new Response();
 
