@@ -70,7 +70,9 @@
 
 <div class="trip-header">
 
-	<input class="trip-header__name" data-bind="trip.title">
+	<span data-bind="text: 'Id is ' + trip.title()"></span>
+
+	<input class="trip-header__name" data-bind="value: trip.title">
 
 
 </div>
