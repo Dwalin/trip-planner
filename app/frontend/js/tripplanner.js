@@ -252,6 +252,9 @@ $(function() {
 			});
 		};
 		self.deleteStop = function($item) {
+
+			console.log($item);
+
 			$.ajax({
 				dataType: "json",
 				type: "DELETE",
