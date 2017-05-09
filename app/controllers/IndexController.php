@@ -209,7 +209,7 @@ class IndexController extends RestController {
 
         $trip = $user->Trip;
 
-        die(var_dump( $trip ));
+        die(var_dump( $trip->toArray() ));
 
         if ($trip) {
 
