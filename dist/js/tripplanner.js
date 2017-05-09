@@ -279,8 +279,8 @@ var render = function(url, viewModel, property) {
 		data: "",
 		url: url,
 		success: function(data) {
-			log("Render started.");
-			log(data);
+			console.log("Render started.");
+			console.log(data);
 
 			if (data.isArray()) {
 				data.forEach(function(item){
