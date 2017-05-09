@@ -266,32 +266,30 @@ class IndexController extends RestController {
     }
 
     /**
-     * @Put("/api/trip/{id:[0-9]+}/stops/")
+     * @Put("/api/trip/")
      */
-    public function stopsWriteAction($id) {
+    public function tripWriteAction($id) {
 
         $response = new Response();
 
         $id       = $this->request->getPut("id");
-        $name     = $this->request->getPut("name");
-        $location = $this->request->getPut("location");
+        $title     = $this->request->getPut("title");
 
         if ($id) {
-            $stop = Stop::findFirst($id);
+            $trip = Trip::findFirst($id);
         } else {
-            $stop = new Stop();
+            $trip = new Trip();
         }
 
-        $stop->name     = $name;
-        $stop->location = $location;
+        $trip->title     = $title;
 
-        if ($stop->save() != false) {
+        if ($trip->save() != false) {
 
             $response->setStatusCode(201, "Success");
             $response->setJsonContent(
                 array(
                     'status' => 'Stop succesfully created.',
-                    'data'   => $stop->toArray()
+                    'data'   => $trip->toArray()
                 )
             );
 
@@ -299,7 +297,7 @@ class IndexController extends RestController {
             $response->setStatusCode(409, "Conflict");
 
             $errors = array();
-            foreach ($stop->getMessages() as $message) {
+            foreach ($trip->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
 

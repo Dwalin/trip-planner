@@ -213,8 +213,26 @@ $(function() {
 		self.stops    = ko.observableArray();
 
 		self.updateName = function() {
-			log( 'The trip name is updated: ' + self.title() );
-		};
+
+
+			$.ajax({
+				dataType: "json",
+				type: "PUT",
+				data: {
+					id: self.id,
+					title: self.id
+				},
+				url: "http://travel.done.report/api/trip/",
+				success: function(data) {
+					log("Updated trip Title.");
+					log(data);
+				},
+				error: function(data) {
+					log("Could not update trip Title");
+					log(data);
+				}
+			});
+		}; 
 
 		render("http://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops);
 
