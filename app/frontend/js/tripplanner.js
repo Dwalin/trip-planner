@@ -354,6 +354,14 @@ $(function() {
 			});
 		}
 	};
+
+	ko.bindingHandlers.geocomplete = {
+		init: function(element, valueAccessor) {
+			autocomplete = new google.maps.places.Autocomplete(
+				element, {types: ['geocode']});
+
+			}
+	};
 	
 
 	ko.applyBindings( new interfaceVM() );
