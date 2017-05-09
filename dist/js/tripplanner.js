@@ -219,7 +219,7 @@ $(function() {
 				type: "PUT",
 				data: {
 					id: self.id,
-					title: self.id
+					title: self.title
 				},
 				url: "http://travel.done.report/api/trip/",
 				success: function(data) {
