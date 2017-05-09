@@ -216,7 +216,9 @@ $(function() {
 			$.ajax({
 				dataType: "json",
 				type: "PUT",
-				data: "",
+				data: {
+					trip_id: self.id
+				},
 				url: "http://travel.done.report/api/stop/",
 				success: function(data) {
 					log("Created new stop");
