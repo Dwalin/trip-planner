@@ -359,14 +359,18 @@ $(function() {
 			var autocomplete = new google.maps.places.Autocomplete(
 				element, {types: ['geocode']});
 
-			var value = valueAccessor();
 
 			autocomplete.addListener('place_changed', function(){
 				var place = autocomplete.getPlace();
 				console.log(place.formatted_address);
-				value(place.formatted_address);
+				valueAccessor(place.formatted_address);
 			});
 
+		},
+		update: function(element, valueAccessor, allBindings) {
+			// First get the latest data that we're bound to
+			var value = valueAccessor();
+			console.log("Value is " + value);
 		}
 	};
 	
