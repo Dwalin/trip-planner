@@ -241,6 +241,8 @@ class IndexController extends RestController {
 
         $trip = Trip::findFirst($id);
 
+        die($id);
+
         if (!$trip) {
 
             $response->setStatusCode(404, "Not Found");
