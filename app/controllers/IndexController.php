@@ -327,19 +327,18 @@ class IndexController extends RestController {
 
         if ($id) {
             $stop = Stop::findFirst($id);
+            $stop->name = $name;
         } else {
             $stop = new Stop();
         }
-
-        $stop->name     = $name;
 
         if ($stop->save() != false) {
 
             $response->setStatusCode(201, "Success");
             $response->setJsonContent(
                 array(
-                    'status' => 'Stopsuccessfully updated.',
-                    'data'   => $stop->toArray()[title]
+                    'status' => 'Stop successfully updated.',
+                    'data'   => $stop->toArray()
                 )
             );
 

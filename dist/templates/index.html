@@ -91,6 +91,11 @@
 			<input class="trip-stop__input" data-bind="value: name, event: {change: update}" type="text" placeholder="Type a name.">
 		</header>
 
+		<section class="trip-stop__add">
+			<button class="trip-button" data-bind="event: {click: $parent.addNewStop}">
+				Add a new stop
+			</button>
+		</section>
 
 		<article class="trip-plan__day">
 
