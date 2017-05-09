@@ -153,8 +153,6 @@ class IndexController extends RestController {
 
         $user = new Users();
 
-//        $user->login        = $this->request->getPost('login');
-//        $user->name        = $this->request->getPost('name');
         $user->email       = $this->request->getPost('email');
         $user->password    = $this->security->hash($this->request->getPost('password'));
 
@@ -234,14 +232,50 @@ class IndexController extends RestController {
 
     }
 
+    /**
+     * @Get("/api/trip/{id:[0-9]+}/stops/")
+     */
+    public function stopsAction() {
+
+        $response = new Response();
+
+        $trip = Trip::findFirst($id);
+        $stops = $trip->Stop;
+
+        if ($stops) {
+
+            $this->$response->setStatusCode(201, "Success");
+            $this->$response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'data'   => $stops->toArray()
+                )
+            );
+
+        } else {
+
+            $this->$response->setStatusCode(404, "Not Found");
+            $this->$response->setJsonContent(
+                array(
+                    'status' => 'Not found'
+                )
+            );
+
+        }
+
+        return $response;
+
+    }
 
 
 
 
-//
-//
-//
-//
+
+
+
+
+
+
 //    /**
 //     * @Get("/api/calendar/")
 //     */
