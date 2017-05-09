@@ -255,10 +255,10 @@ class IndexController extends RestController {
                 )
             );
         } else {
-            $response->setStatusCode(404, "No stops were found.");
+            $response->setStatusCode(404, "Not Found");
             $response->setJsonContent(
                 array(
-                    'status' => 'Not found'
+                    'status' => 'No stops were found.'
                 )
             );
         }
