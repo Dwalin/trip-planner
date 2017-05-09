@@ -246,7 +246,7 @@ class IndexController extends RestController {
             ]
         ]);
 
-        if ($stops) {
+        if ($stops->count() > 0) {
             $response->setStatusCode(201, "Success");
             $response->setJsonContent(
                 array(
@@ -255,7 +255,7 @@ class IndexController extends RestController {
                 )
             );
         } else {
-            $response->setStatusCode(404, "Not Found");
+            $response->setStatusCode(404, "No stops were found.");
             $response->setJsonContent(
                 array(
                     'status' => 'Not found'
