@@ -98,14 +98,11 @@
 	<!-- ko foreach: trip -->
 	<!-- ko foreach: stops -->
 
-	Trip stop
-
-	<span data-bind="text: name"></span>
-
 	<article class="trip-stop">
 
 		<header class="trip-stop__place">
-			<input class="trip-stop__input" type="text">
+			<input class="trip-stop__input" data-bind="value: location" type="text" placeholder="Type a location.">
+			<input class="trip-stop__input" data-bind="value: name" type="text" placeholder="Type a name.">
 		</header>
 
 
