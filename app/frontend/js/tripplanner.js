@@ -364,6 +364,7 @@ $(function() {
 				var place = autocomplete.getPlace();
 				console.log(place.formatted_address);
 				$(element).val(place.formatted_address);
+				valueAccessor(place.formatted_address);
 			});
 
 		}
