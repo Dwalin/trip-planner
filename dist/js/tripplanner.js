@@ -211,7 +211,7 @@ $(function() {
 		self.duration = ko.observable();
 		self.stops    = ko.observableArray();
 
-		render("http://travel.done.report/api/trip/" + self.id() + "/stops/", stopVM, self.stops);
+		render("http://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops);
 
 
 	};
