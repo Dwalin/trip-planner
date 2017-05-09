@@ -268,7 +268,7 @@ class IndexController extends RestController {
     /**
      * @Put("/api/trip/")
      */
-    public function tripWriteAction($id) {
+    public function tripWriteAction() {
 
         $response = new Response();
 
@@ -298,6 +298,56 @@ class IndexController extends RestController {
 
             $errors = array();
             foreach ($trip->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                array(
+                    'status'   => 'Could not create a stop.',
+                    'messages' => $errors
+                )
+            );
+        }
+
+        return $response;
+
+    }
+
+
+    /**
+     * @Put("/api/stop/")
+     */
+    public function stopUpdateAction() {
+
+        $response = new Response();
+
+        $id        = $this->request->getPut("id");
+        $name     = $this->request->getPut("name");
+        $location     = $this->request->getPut("location");
+
+        if ($id) {
+            $stop = Stop::findFirst($id);
+        } else {
+            $stop = new Stop();
+        }
+
+        $stop->name     = $name;
+
+        if ($stop->save() != false) {
+
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => 'Stopsuccessfully updated.',
+                    'data'   => $stop->toArray()[title]
+                )
+            );
+
+        } else {
+            $response->setStatusCode(409, "Conflict");
+
+            $errors = array();
+            foreach ($stop->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
 

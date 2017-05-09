@@ -101,8 +101,8 @@
 	<article class="trip-stop">
 
 		<header class="trip-stop__place">
-			<input class="trip-stop__input" data-bind="value: location" type="text" placeholder="Type a location.">
-			<input class="trip-stop__input" data-bind="value: name" type="text" placeholder="Type a name.">
+			<input class="trip-stop__input" data-bind="value: location, event: {change: update}" type="text" placeholder="Type a location.">
+			<input class="trip-stop__input" data-bind="value: name, event: {change: update}" type="text" placeholder="Type a name.">
 		</header>
 
 

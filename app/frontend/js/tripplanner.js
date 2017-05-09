@@ -214,7 +214,6 @@ $(function() {
 
 		self.updateName = function() {
 
-
 			$.ajax({
 				dataType: "json",
 				type: "PUT",
@@ -254,6 +253,28 @@ $(function() {
 		self.days         = ko.observableArray();
 
 		self.days = ko.observableArray();
+
+		self.update = function() {
+
+			$.ajax({
+				dataType: "json",
+				type: "PUT",
+				data: {
+					id: self.id,
+					name: self.name,
+					location: self.location
+				},
+				url: "http://travel.done.report/api/stop/",
+				success: function(data) {
+					log("Updated trip Title.");
+					log(data);
+				},
+				error: function(data) {
+					log("Could not update trip Title");
+					log(data);
+				}
+			});
+		};
 
 		//render("http://travel.done.report/api/stop/" + self.id() + "/", dayVM, self.days);
 
