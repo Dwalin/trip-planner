@@ -283,7 +283,7 @@ var render = function(url, viewModel, property) {
 			console.log("Render started.");
 			console.log(data);
 
-			if (data.isArray()) {
+			if (Array.isArray(data)) {
 				data.forEach(function(item){
 					property.push(new viewModel(item) );
 				});
