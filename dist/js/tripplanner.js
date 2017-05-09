@@ -180,7 +180,7 @@ $(function() {
 			$.ajax({
 				dataType: "json",
 				data: "",
-				url: "http://travel.done.report/trip/",
+				url: "http://travel.done.report/api/trip/",
 				success: function(data) {
 					console.log("Getting trip data.");
 					console.log(data);
