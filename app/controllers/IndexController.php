@@ -367,17 +367,12 @@ class IndexController extends RestController {
 
 
     /**
-     * @Delete("/api/stop/")
+     * @Delete("/api/stop/{id:[0-9]+}")
      */
-    public function stopDeleteAction() {
+    public function stopDeleteAction($id) {
 
         $response = new Response();
-
-        die(var_dump($this->request->getQuery()));
-
-        $id = $this->request->get("id");
         $stop = Stop::findFirst($id);
-
 
         if ($stop->delete() != false) {
 
