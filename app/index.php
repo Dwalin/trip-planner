@@ -44,9 +44,9 @@ try {
         return new DbAdapter(
             array(
                 "host"     => "kryzhani.mysql.ukraine.com.ua",
-                "username" => "kryzhani_cal2017",
-                "password" => "qpnyphwk",
-                "dbname"   => "kryzhani_cal2017",
+                "username" => "kryzhani_travel",
+                "password" => "7yur6ak7",
+                "dbname"   => "kryzhani_travel",
                 "options" => array(
                     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
                 )
