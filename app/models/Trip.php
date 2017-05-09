@@ -13,7 +13,13 @@ class Trip extends Model
 
     public function initialize() {
 
-
+        $this->hasManyToMany(
+            "id",
+            "Userbinding",
+            "trip_id", "user_id",
+            "Users",
+            "id"
+        );
 
         $this->hasMany(
             "id",

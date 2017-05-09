@@ -205,7 +205,9 @@ class IndexController extends RestController {
         $userId = $this->session->get("user")['id'];
         $user = Users::findFirst($userId);
 
-        $trip = $user->Trip;
+        $trip = $user->Userbinding;
+
+        die(var_dump($trip));
 
         if ($trip) {
 
