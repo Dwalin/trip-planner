@@ -241,23 +241,17 @@ class IndexController extends RestController {
 
         $trip = Trip::findFirst($id);
 
-        die($id);
-
         if (!$trip) {
-
             $response->setStatusCode(404, "Not Found");
             $response->setJsonContent(
                 array(
                     'status' => 'Not found'
                 )
             );
-
         } else {
-
             $stops = $trip->Stop;
 
             if ($stops) {
-
                 $response->setStatusCode(201, "Success");
                 $response->setJsonContent(
                     array(
@@ -265,16 +259,13 @@ class IndexController extends RestController {
                         'data'   => $stops->toArray()
                     )
                 );
-
             } else {
-
                 $response->setStatusCode(404, "Not Found");
                 $response->setJsonContent(
                     array(
                         'status' => 'Not found'
                     )
                 );
-
             }
 
         }
