@@ -231,7 +231,6 @@ $(function() {
 				}
 			});
 		};
-
 		self.updateName = function() {
 
 			$.ajax({
@@ -252,7 +251,6 @@ $(function() {
 				}
 			});
 		};
-
 		self.deleteStop = function($item) {
 			$.ajax({
 				dataType: "json",
@@ -364,12 +362,14 @@ $(function() {
 
 var render = function(url, viewModel, property, comment) {
 
+	console.log(comment + " render started.");
+
 	$.ajax({
 		dataType: "json",
 		data: "",
 		url: url,
 		success: function(data) {
-			console.log(comment + " render started.");
+			console.log(comment + " render finished successfully.");
 
 			if (Array.isArray(data.data)) {
 				data.data.forEach(function(item) {
