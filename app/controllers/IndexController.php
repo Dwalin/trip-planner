@@ -369,7 +369,7 @@ class IndexController extends RestController {
     /**
      * @Delete("/api/stop/")
      */
-    public function stopUpdateAction() {
+    public function stopDeleteAction() {
 
         $response = new Response();
 
