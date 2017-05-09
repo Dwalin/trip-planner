@@ -77,11 +77,14 @@
 <!-- /ko -->
 
 
+
+<!-- comment -->
+
 <!-- ko if: trip -->
 
 <div class="trip-header">
 
-	<span data-bind="text: ('Id is ' + trip.id) "></span>
+	<span data-bind="text: ('Id is ' + trip().id) "></span>
 
 	<input class="trip-header__name" data-bind="value: trip().title">
 
@@ -89,7 +92,6 @@
 </div>
 
 <!-- /ko -->
-
 
 
 
