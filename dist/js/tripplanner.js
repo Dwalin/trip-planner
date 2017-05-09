@@ -211,7 +211,7 @@ $(function() {
 		self.duration = ko.observable();
 		self.stops    = ko.observableArray();
 
-		self.updateName = function(){
+		self.updateName = function() {
 			log(self.title);
 		};
 
