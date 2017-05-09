@@ -206,8 +206,8 @@ $(function() {
 	var tripVM = function(data) {
 		var self = this;
 
-		self.id = ko.observable('');
-		self.title = ko.observable('Sample trip');
+		self.id = ko.observable(data.id);
+		self.title = ko.observable(data.title);
 		self.duration = ko.observable();
 		self.stops = ko.observableArray();
 
