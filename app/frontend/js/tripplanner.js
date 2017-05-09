@@ -259,7 +259,7 @@ $(function() {
 			$.ajax({
 				dataType: "json",
 				type: "DELETE",
-				url: "http://travel.done.report/api/stop/" + item.id,
+				url: "http://travel.done.report/api/stop/" + item.id(),
 				success: function(data) {
 					log("Deleted a stop.");
 					self.stops.remove(item);
