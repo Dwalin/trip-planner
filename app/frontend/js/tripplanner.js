@@ -217,6 +217,12 @@ $(function() {
 
 	};
 
+	tripVM.title.subscribe(function(value) {
+
+		log(value);
+
+	});
+
 
 	var stopVM = function(data) {
 		var self = this;
@@ -1845,6 +1851,7 @@ var selection_classed = function(name, value) {
   return this.each((typeof value === "function"
       ? classedFunction : value
       ? classedTrue
+
       : classedFalse)(names, value));
 };
 
