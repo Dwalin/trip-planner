@@ -314,7 +314,7 @@ var render = function(url, viewModel, property, comment) {
 					property.push( new viewModel(item) );
 				});
 
-				console.log(property);
+				console.log(property());
 			} else {
 				console.log(comment + ": something went wrong.");
 			}
