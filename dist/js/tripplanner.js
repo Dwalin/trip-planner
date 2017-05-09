@@ -244,6 +244,9 @@ $(function() {
 	var stopVM = function(data) {
 		var self = this;
 
+		log("Adding a stop.");
+		log(data);
+
 		self.id           = ko.observable(data.id);
 		self.name         = ko.observable(data.name);
 		self.location     = ko.observable(data.location);
