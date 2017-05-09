@@ -98,6 +98,8 @@ class IndexController extends RestController {
      */
     public function currentUserAction() {
 
+        $response = new Response();
+
         $userId = $this->session->get("user")['id'];
         $user = Users::findFirst(
             array(
@@ -106,7 +108,7 @@ class IndexController extends RestController {
             )
         );
 
-        $this->response->setJsonContent(
+        $response->setJsonContent(
             $user->toArray('name', 'id')
         );
 

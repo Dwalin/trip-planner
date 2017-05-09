@@ -154,9 +154,11 @@ $(function() {
 				success: function(data) {
 					log("Logged in.");
 					self.loggedIn(true);
+					self.getTrips();
 				},
 				error: function(data) {
 					log("Not logged in.");
+					log(data);
 					self.loggedIn(false);
 				}
 			});
@@ -194,7 +196,6 @@ $(function() {
 		// !-----------------------------------------------------------
 
 		self.refresh();
-		self.getTrips();
 
 
 	};
