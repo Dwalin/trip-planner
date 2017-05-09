@@ -208,7 +208,7 @@ class IndexController extends RestController {
         $trip = $user->Userbinding;
         $trip = $user->Trip;
 
-        die(var_dump($trip));
+//        die(var_dump($trip));
 
         if ($trip) {
 
