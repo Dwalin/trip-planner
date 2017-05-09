@@ -210,7 +210,7 @@ class IndexController extends RestController {
 //        $trip = $user->getTrip();
 //        $trip = $user->Trip;
 
-        die(var_dump($user->toArray()));
+        die(var_dump( $user->toArray() ));
 
         if ($trip) {
 
@@ -241,128 +241,128 @@ class IndexController extends RestController {
 
 
 
-
-
-
-
-    /**
-     * @Get("/api/calendar/")
-     */
-    public function calendarAction() {
-
-        $userId = $this->session->get("user")['id'];
-        $user = Users::findFirst($userId);
-
-        $calendar = $user->getCalendar();
-
-//        $notes = $calendar->getNotes();
-//        echo $calendar->id;
-
-        $notes = Notes::find([
-            "calendar_id = :id:",
-            "bind" => [
-                "id" => $calendar->toArray()[0]["id"]
-            ]
-        ]);
-
-        $notes = $notes->toArray();
-
-        foreach ($notes as $keyA => $noteA) {
-            foreach ($notes as $keyB => $noteB) {
-                if ($noteA != $noteB) {
-                    if ($noteA['day'] == $noteB['day']) {
-                        if (strtotime($noteA['created']) > strtotime($noteB['created'])) {
-                            unset($notes[$keyB]);
-                        };
-                    };
-                }
-
-            }
-        }
-
-        $processedNotes = array();
-        $counters = array();
-
-        foreach ($notes as $note) {
-            $processedNotes[] = $note;
-            if ($note["counter"]) {
-                $counters[] = array($note["day"], $note["counter"]);
-            }
-        }
-
-
-
-        $this->response->setJsonContent(
-            array(
-                'notes'   => $processedNotes,
-                'counters'   => $counters,
-                'calendar' => $calendar->toArray()
-            )
-
-        );
-
-        return $response;
-
-    }
-
-    /**
-     * @Post("/api/calendar/")
-     */
-    public function noteAddAction() {
-
-        $response = new Response();
-        $request = $this->request->getPost();
-
-        $userId = $this->session->get("user")['id'];
-        $user = Users::findFirst($userId);
-
-        $calendar = $user->getCalendar();
-
-        $note = Notes::findFirst([
-            "day = " . $this->request->getPost('day') . " AND calendar_id = " . $calendar->toArray()[0]["id"]
-        ]);
-
-
-        if ($note) {
-            $note -> note          = $this->request->getPost('note');
-        } else {
-            $note = new Notes();
-            $note -> day           = $this->request->getPost('day');
-            $note -> note          = $this->request->getPost('note');
-            $note -> calendar_id   = $calendar->toArray()[0]["id"];
-        }
-
-        if ($note->save() == true) {
-            $response->setStatusCode(201, "Success");
-            $response->setJsonContent(
-                array(
-                    'status' => 'OK',
-                    'action' => 'created',
-                    'data'   => $note
-                )
-            );
-        } else {
-            // Change the HTTP status
-            $response->setStatusCode(409, "Conflict");
-
-            // Send errors to the client
-            $errors = array();
-            foreach ($note->getMessages() as $message) {
-                $errors[] = $message->getMessage();
-            }
-
-            $response->setJsonContent(
-                array(
-                    'status'   => 'ERROR',
-                    'messages' => $errors,
-                    'calendar' => $calendar->toArray()
-                )
-            );
-        }
-
-        return $response;
-
-    }
-
-
-}
+//
+//
+//
+//
+//    /**
+//     * @Get("/api/calendar/")
+//     */
+//    public function calendarAction() {
+//
+//        $userId = $this->session->get("user")['id'];
+//        $user = Users::findFirst($userId);
+//
+//        $calendar = $user->getCalendar();
+//
+////        $notes = $calendar->getNotes();
+////        echo $calendar->id;
+//
+//        $notes = Notes::find([
+//            "calendar_id = :id:",
+//            "bind" => [
+//                "id" => $calendar->toArray()[0]["id"]
+//            ]
+//        ]);
+//
+//        $notes = $notes->toArray();
+//
+//        foreach ($notes as $keyA => $noteA) {
+//            foreach ($notes as $keyB => $noteB) {
+//                if ($noteA != $noteB) {
+//                    if ($noteA['day'] == $noteB['day']) {
+//                        if (strtotime($noteA['created']) > strtotime($noteB['created'])) {
+//                            unset($notes[$keyB]);
+//                        };
+//                    };
+//                }
+//
+//            }
+//        }
+//
+//        $processedNotes = array();
+//        $counters = array();
+//
+//        foreach ($notes as $note) {
+//            $processedNotes[] = $note;
+//            if ($note["counter"]) {
+//                $counters[] = array($note["day"], $note["counter"]);
+//            }
+//        }
+//
+//
+//
+//        $this->response->setJsonContent(
+//            array(
+//                'notes'   => $processedNotes,
+//                'counters'   => $counters,
+//                'calendar' => $calendar->toArray()
+//            )
+//
+//        );
+//
+//        return $response;
+//
+//    }
+//
+//    /**
+//     * @Post("/api/calendar/")
+//     */
+//    public function noteAddAction() {
+//
+//        $response = new Response();
+//        $request = $this->request->getPost();
+//
+//        $userId = $this->session->get("user")['id'];
+//        $user = Users::findFirst($userId);
+//
+//        $calendar = $user->getCalendar();
+//
+//        $note = Notes::findFirst([
+//            "day = " . $this->request->getPost('day') . " AND calendar_id = " . $calendar->toArray()[0]["id"]
+//        ]);
+//
+//
+//        if ($note) {
+//            $note -> note          = $this->request->getPost('note');
+//        } else {
+//            $note = new Notes();
+//            $note -> day           = $this->request->getPost('day');
+//            $note -> note          = $this->request->getPost('note');
+//            $note -> calendar_id   = $calendar->toArray()[0]["id"];
+//        }
+//
+//        if ($note->save() == true) {
+//            $response->setStatusCode(201, "Success");
+//            $response->setJsonContent(
+//                array(
+//                    'status' => 'OK',
+//                    'action' => 'created',
+//                    'data'   => $note
+//                )
+//            );
+//        } else {
+//            // Change the HTTP status
+//            $response->setStatusCode(409, "Conflict");
+//
+//            // Send errors to the client
+//            $errors = array();
+//            foreach ($note->getMessages() as $message) {
+//                $errors[] = $message->getMessage();
+//            }
+//
+//            $response->setJsonContent(
+//                array(
+//                    'status'   => 'ERROR',
+//                    'messages' => $errors,
+//                    'calendar' => $calendar->toArray()
+//                )
+//            );
+//        }
+//
+//        return $response;
+//
+//    }
+//
+//
+//}
