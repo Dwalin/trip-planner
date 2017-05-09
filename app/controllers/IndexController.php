@@ -249,7 +249,9 @@ class IndexController extends RestController {
                 )
             );
         } else {
-            $stops = $trip->Stop;
+            $stops = $trip->Stop
+
+            die($stops);
 
             if ($stops) {
                 $response->setStatusCode(201, "Success");
@@ -269,6 +271,8 @@ class IndexController extends RestController {
             }
 
         }
+
+
 
 
 
