@@ -222,6 +222,7 @@ $(function() {
 				success: function(data) {
 					log("Created new stop");
 					log(data);
+					self.stops.push(data.data);
 				},
 				error: function(data) {
 					log("Could not create a new stop");
