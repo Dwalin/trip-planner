@@ -366,6 +366,49 @@ class IndexController extends RestController {
 
 
 
+    /**
+     * @Delete("/api/stop/")
+     */
+    public function stopUpdateAction() {
+
+        $response = new Response();
+
+        $id = $this->request->getPut("id");
+        $stop = Stop::findFirst($id);
+
+
+        if ($stop->delete() != false) {
+
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => 'Stop successfully deleted.',
+                    'data'   => $stop->toArray()
+                )
+            );
+
+        } else {
+            $response->setStatusCode(409, "Conflict");
+
+            $errors = array();
+            foreach ($stop->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                array(
+                    'status'   => 'Could not delete a stop.',
+                    'messages' => $errors
+                )
+            );
+        }
+
+        return $response;
+
+    }
+
+
+
 
 
 

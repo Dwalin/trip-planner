@@ -253,6 +253,26 @@ $(function() {
 			});
 		};
 
+		self.deleteStop = function($item) {
+			$.ajax({
+				dataType: "json",
+				type: "DELETE",
+				data: {
+					id: $item.id
+				},
+				url: "http://travel.done.report/api/stop/",
+				success: function(data) {
+					log("Deleted a stop.");
+					self.stops.remove($item);
+
+				},
+				error: function(data) {
+					log("Could not delete a stop.");
+					log(data);
+				}
+			});
+		};
+
 		render("http://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops, "Stops");
 
 
