@@ -205,12 +205,14 @@ $(function() {
 	var tripVM = function(data) {
 		var self = this;
 
+		log(data);
+
 		self.id = ko.observable(data.id);
 		self.title = ko.observable(data.title);
 		self.duration = ko.observable();
 		self.stops = ko.observableArray();
 
-		render("http://travel.done.report/api/trip/" + self.id() + "/", stopVM, self.stops);
+		render("http://travel.done.report/api/trip/" + self.id() + "/stops/", stopVM, self.stops);
 
 
 	};
@@ -226,7 +228,7 @@ $(function() {
 
 		self.days = ko.observableArray();
 
-		render("http://travel.done.report/api/stop/" + self.id() + "/", dayVM, self.days);
+		//render("http://travel.done.report/api/stop/" + self.id() + "/", dayVM, self.days);
 
 
 	};
