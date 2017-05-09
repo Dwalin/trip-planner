@@ -369,9 +369,10 @@ $(function() {
 
 		},
 		update: function(element, valueAccessor, allBindings) {
-			// First get the latest data that we're bound to
+
 			var value = valueAccessor();
-			console.log("Value is " + value);
+			var valueUnwrapped = ko.unwrap(value);
+			console.log("Value is " + valueUnwrapped);
 		}
 	};
 	
