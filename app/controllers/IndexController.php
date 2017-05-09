@@ -209,8 +209,8 @@ class IndexController extends RestController {
 
         if ($trip) {
 
-            $this->$response->setStatusCode(201, "Success");
-            $this->$response->setJsonContent(
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
                 array(
                     'status' => 'OK',
                     'data'   => $trip->toArray()
@@ -219,8 +219,8 @@ class IndexController extends RestController {
 
         } else {
 
-            $this->$response->setStatusCode(404, "Not Found");
-            $this->$response->setJsonContent(
+            $response->setStatusCode(404, "Not Found");
+            $response->setJsonContent(
                 array(
                     'status' => 'Not found'
                 )
