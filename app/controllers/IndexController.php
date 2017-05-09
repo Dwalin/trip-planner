@@ -205,7 +205,7 @@ class IndexController extends RestController {
         $userId = $this->session->get("user")['id'];
         $user = Users::findFirst($userId);
 
-        $trip = $user->getTrip();
+        $trip = $user->Trip;
 
         if ($trip) {
 
