@@ -209,8 +209,6 @@ class IndexController extends RestController {
 
         $trip = $user->Trip;
 
-        die(var_dump( $trip->toArray() ));
-
         if ($trip) {
 
             $this->$response->setStatusCode(201, "Success");
