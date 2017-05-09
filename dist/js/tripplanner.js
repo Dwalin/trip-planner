@@ -216,11 +216,7 @@ $(function() {
 
 	};
 
-	tripVM.title.subscribe(function(value) {
 
-		log(value);
-
-	});
 
 
 	var stopVM = function(data) {
@@ -275,6 +271,10 @@ $(function() {
 	
 
 	ko.applyBindings( new interfaceVM() );
+
+	interfaceVM.trip.title.subscribe(function(value) {
+		log(value);
+	});
 	
 
 });

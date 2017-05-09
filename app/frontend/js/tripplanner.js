@@ -217,11 +217,7 @@ $(function() {
 
 	};
 
-	tripVM.title.subscribe(function(value) {
 
-		log(value);
-
-	});
 
 
 	var stopVM = function(data) {
@@ -276,6 +272,10 @@ $(function() {
 	
 
 	ko.applyBindings( new interfaceVM() );
+
+	interfaceVM.trip.title.subscribe(function(value) {
+		log(value);
+	});
 	
 
 });
@@ -1851,7 +1851,6 @@ var selection_classed = function(name, value) {
   return this.each((typeof value === "function"
       ? classedFunction : value
       ? classedTrue
-
       : classedFalse)(names, value));
 };
 
