@@ -202,6 +202,8 @@ class IndexController extends RestController {
      */
     public function tripAction() {
 
+        $response = new Response();
+
         $userId = $this->session->get("user")['id'];
         $user = Users::findFirst($userId);
 
