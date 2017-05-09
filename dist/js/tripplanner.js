@@ -183,7 +183,7 @@ $(function() {
 				url: "http://travel.done.report/api/trip/",
 				success: function(data) {
 					log("Getting trip data.");
-					self.trip = new tripVM(data.data[0]);
+					self.trip( new tripVM(data.data[0]) );
 				},
 				error: function(data) {
 					log("Could not get trip data.");
