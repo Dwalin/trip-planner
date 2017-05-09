@@ -284,7 +284,7 @@ var render = function(url, viewModel, property) {
 			console.log(data);
 
 			if (Array.isArray(data)) {
-				data.forEach(function(item){
+				data.data.forEach(function(item){
 					property.push(new viewModel(item) );
 				});
 			} else {
