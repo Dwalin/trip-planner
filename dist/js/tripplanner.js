@@ -308,14 +308,13 @@ var render = function(url, viewModel, property, comment) {
 		url: url,
 		success: function(data) {
 			console.log(comment + " render started.");
-			console.log(data);
 
 			if (Array.isArray(data.data)) {
 				data.data.forEach(function(item){
-					property.push(new viewModel(item) );
+					property.push( new viewModel(item) );
 				});
 			} else {
-
+				console.log(comment + ": something went wrong.");
 			}
 
 		},
