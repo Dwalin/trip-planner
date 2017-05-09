@@ -216,6 +216,12 @@ $(function() {
 
 	};
 
+	tripVM.title.subscribe(function(value) {
+
+		log(value);
+
+	});
+
 
 	var stopVM = function(data) {
 		var self = this;
