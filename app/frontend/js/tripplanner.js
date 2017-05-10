@@ -391,14 +391,12 @@ $(function() {
 
 			console.log("------------------------------");
 			console.log(bindingContext.$data.location());
-			console.log(bindingContext.$parent.stops());
-			console.log(bindingContext.$parent.stops()[bindingContext.$index]);
-			console.log(bindingContext.$index);
+			console.log(bindingContext.$parent.stops()[bindingContext.$index()-1].location);
 			console.log("------------------------------");
 
 
-			var chicago = {lat: 41.85, lng: -87.65};
-			var indianapolis = {lat: 39.79, lng: -86.14};
+			var from = bindingContext.$data.location();
+			var to = bindingContext.$parent.stops()[bindingContext.$index()-1].location;
 
 			var map = new google.maps.Map(element, {
 				scrollwheel: false,
@@ -410,8 +408,8 @@ $(function() {
 			});
 
 			var request = {
-				destination: indianapolis,
-				origin: chicago,
+				origin: from,
+				destination: to,
 				travelMode: 'DRIVING'
 			};
 
