@@ -387,7 +387,15 @@ $(function() {
 	};
 
 	ko.bindingHandlers.direction = {
-		init: function(element, valueAccessor, allBindings) {
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+			console.log("------------------------------");
+			console.log(bindingContext);
+			console.log(bindingContext.$parent);
+			console.log(bindingContext.$parent.location);
+			console.log(bindingContext.$parent().location);
+			console.log("------------------------------");
+
 
 			var chicago = {lat: 41.85, lng: -87.65};
 			var indianapolis = {lat: 39.79, lng: -86.14};
