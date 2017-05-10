@@ -398,6 +398,8 @@ $(function() {
 			console.log("To " + to);
 			console.log("------------------------------");
 
+
+
 			if (from != null) {
 
 				setTimeout(
@@ -424,7 +426,7 @@ $(function() {
 							}
 						});
 
-					}, (1000 + 4000*Math.random())
+					}, (1000 + 10000*Math.random())
 				);
 
 			}
