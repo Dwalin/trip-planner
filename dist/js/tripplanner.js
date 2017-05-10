@@ -389,13 +389,12 @@ $(function() {
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 			console.log("------------------------------");
-			console.log(bindingContext.$data.location());
 			console.log(bindingContext.$parent.stops()[bindingContext.$index()-1].location());
+			console.log(bindingContext.$data.location());
 			console.log("------------------------------");
 
-
-			var to   = bindingContext.$data.location();
 			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
+			var to   = bindingContext.$data.location();
 
 			if (from != undefined) {
 				var map = new google.maps.Map(element, {
