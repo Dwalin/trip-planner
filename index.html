@@ -101,7 +101,7 @@
 
 
 	<!-- ko if: $index() != 0  -->
-		<div>Has previous element <span data-bind="text: $parent.stops()[$index() - 1].location()"></span></div>
+		<div> <span data-bind="text: location"></span> — <span data-bind="text: $parent.stops()[$index() - 1].location()"></span></div>
 
 
 		<div class="trip-map">
