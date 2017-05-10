@@ -327,3 +327,7 @@ body * {
 .trip-stop {
   margin-bottom: 40px;
 }
+.trip-map {
+  padding: 40px;
+  background-color: rgba(0,0,0,0.05);
+}
