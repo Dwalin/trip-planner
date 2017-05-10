@@ -389,8 +389,8 @@ $(function() {
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 			console.log("------------------------------");
-			console.log(bindingContext.$data.location());
-			console.log(bindingContext.$parent.stops()[bindingContext.$index-1].location());
+			console.log(bindingContext.$data);
+			console.log(bindingContext.$parent.stops()[bindingContext.$index-1]);
 			console.log("------------------------------");
 
 
