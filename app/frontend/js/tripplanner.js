@@ -373,8 +373,7 @@ $(function() {
 				$(element).val(place.formatted_address);
 				valueAccessor(place.formatted_address);
 			});
-
-			ko.applyBindingsToNode(element, { with: valueAccessor() }, bindingContext);
+			
 
 		}
 	};
