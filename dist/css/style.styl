@@ -13,6 +13,8 @@ body {
 $c-main = rgba(80, 200, 240, 1);
 $c-text = rgba(80, 80, 80, 1);
 
+$c-bright = rgba(40, 40, 180, 1);
+
 strokeC(degr)
   stroke: alpha(hue(hsl(90deg, 75%, 50%), degr * 360 / 400), .75);
 
@@ -281,6 +283,14 @@ body * {
 
   align-items: center;
 
+  button {
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    background-color: $c-bright;
+    color: #fff;
+
+  }
 
 }
 
