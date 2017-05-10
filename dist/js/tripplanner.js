@@ -372,7 +372,6 @@ $(function() {
 				console.log("———————————————————");
 				console.log("The place has changed!");
 				console.log(place.formatted_address);
-				console.log(valueAccessor());
 				console.log(valueAccessor);
 				console.log($(element).val());
 				console.log("———————————————————");
@@ -431,6 +430,8 @@ $(function() {
 
 		},
 		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+			console.log("Something updated around the direction.")
 
 		}
 	};
