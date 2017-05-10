@@ -384,6 +384,38 @@ $(function() {
 
 		}
 	};
+
+	ko.bindingHandlers.direction = {
+		init: function(element, valueAccessor, allBindings) {
+
+			var map = new google.maps.Map(element, {
+				scrollwheel: false,
+				zoom: 7
+			});
+
+			var directionsDisplay = new google.maps.DirectionsRenderer({
+				map: map
+			});
+
+			var request = {
+				destination: indianapolis,
+				origin: chicago,
+				travelMode: 'DRIVING'
+			};
+
+			var directionsService = new google.maps.DirectionsService();
+			directionsService.route(request, function(response, status) {
+				if (status == 'OK') {
+					// Display the route on the map.
+					directionsDisplay.setDirections(response);
+				}
+			});
+
+		},
+		update: function(element, valueAccessor, allBindings) {
+
+		}
+	};
 	
 
 	ko.applyBindings( new interfaceVM() );
