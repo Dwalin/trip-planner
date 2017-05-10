@@ -239,6 +239,7 @@ class IndexController extends RestController {
 
         $stops = Stop::find([
             "trip_id = :id:",
+            "order" => "created",
             "bind" => [
                 "id" => $id
             ]
