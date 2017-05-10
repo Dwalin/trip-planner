@@ -398,7 +398,7 @@ $(function() {
 			console.log("To " + to);
 			console.log("------------------------------");
 
-			if (from != undefined) {
+			if (from != null) {
 
 				setTimeout(
 					function(){
