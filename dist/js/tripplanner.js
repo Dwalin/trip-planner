@@ -399,7 +399,7 @@ $(function() {
 
 
 
-			if (from != null) {
+			if (to != null) {
 
 				setTimeout(
 					function(){
