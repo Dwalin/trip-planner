@@ -316,6 +316,13 @@ body * {
   padding: 40px;
   align-items: center;
 }
+.trip-plan button {
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  background-color: #2828b4;
+  color: #fff;
+}
 .trip-stop {
   margin-bottom: 40px;
 }

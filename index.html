@@ -82,27 +82,19 @@
 
 
 
-<!-- ko if: trip -->
-
-<div class="trip-header">
-
-	<span data-bind="text: ('Id is ' + trip().id) "></span>
-
-	<input placeholder="Give a name for your trip" class="trip-header__name" data-bind="value: trip().title, event: {change: trip().updateName}">
-
-	<section class="trip-plan__add">
-		<button class="trip-button" data-bind="event: {click: trip().addNewStop}">
-			Add a new stop
-		</button>
-	</section>
-
-</div>
-
-<!-- /ko -->
-
-
-
 <section class="trip-plan">
+
+	<!-- ko if: trip -->
+
+	<div class="trip-header">
+
+		<span data-bind="text: ('Id is ' + trip().id) "></span>
+
+		<input placeholder="Give a name for your trip" class="trip-header__name" data-bind="value: trip().title, event: {change: trip().updateName}">
+
+	</div>
+
+	<!-- /ko -->
 
 	<!-- ko foreach: trip -->
 	<!-- ko foreach: stops -->
@@ -165,6 +157,21 @@
 	</article>
 
 	<!-- /ko -->
+	<!-- /ko -->
+
+
+	<!-- ko if: trip -->
+
+	<div class="trip-footer">
+
+		<section class="trip-plan__add">
+			<button class="trip-button" data-bind="event: {click: trip().addNewStop}">
+				Add a new stop
+			</button>
+		</section>
+
+	</div>
+
 	<!-- /ko -->
 
 
