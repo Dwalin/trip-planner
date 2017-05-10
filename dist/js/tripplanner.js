@@ -399,26 +399,34 @@ $(function() {
 			console.log("------------------------------");
 
 			if (from != undefined) {
-				var map = new google.maps.Map(element, {
-					scrollwheel: false,
-					zoom: 7
-				});
 
-				var directionsDisplay = new google.maps.DirectionsRenderer({
-					map: map
-				});
+				setTimeout(
+					function(){
 
-				var request = {
-					origin: from,
-					destination: to,
-					travelMode: 'DRIVING'
-				};
+						var map = new google.maps.Map(element, {
+							scrollwheel: false,
+							zoom: 7
+						});
 
-				directionsService.route(request, function(response, status) {
-					if (status == 'OK') {
-						directionsDisplay.setDirections(response);
-					}
-				});
+						var directionsDisplay = new google.maps.DirectionsRenderer({
+							map: map
+						});
+
+						var request = {
+							origin: from,
+							destination: to,
+							travelMode: 'DRIVING'
+						};
+
+						directionsService.route(request, function(response, status) {
+							if (status == 'OK') {
+								directionsDisplay.setDirections(response);
+							}
+						});
+
+					}, (1000 + 4000*Math.random())
+				);
+
 			}
 
 		},
