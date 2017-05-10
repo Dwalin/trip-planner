@@ -392,6 +392,8 @@ $(function() {
 			console.log("------------------------------");
 			console.log(bindingContext.$data.location());
 			console.log(bindingContext.$parent.stops());
+			console.log(bindingContext.$parent.stops()[bindingContext.$index]);
+			console.log(bindingContext.$index);
 			console.log("------------------------------");
 
 
