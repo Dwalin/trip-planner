@@ -176,7 +176,7 @@ $(function() {
 		self.trip = ko.observable();
 
 		self.getTrips = function(){
-			log("Getting trips");
+			log("Getting trips"); 
 
 			$.ajax({
 				dataType: "json",
