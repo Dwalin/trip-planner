@@ -307,3 +307,15 @@ body * {
 .mj-counter__marker {
   fill: #50c8f0;
 }
+.trip-plan {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px;
+  align-items: center;
+}
+.trip-stop {
+  margin-bottom: 40px;
+}
