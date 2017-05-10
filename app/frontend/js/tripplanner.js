@@ -359,25 +359,25 @@ $(function() {
 		init: function(element, valueAccessor, allBindings) {
 
 
-			//var autocomplete = new google.maps.places.Autocomplete(
-			//	element, {types: ['(cities)']});
-			//
-			//
-			//autocomplete.addListener('place_changed', function(){
-			//	var place = autocomplete.getPlace();
-			//
-			//	$(element).val(place.formatted_address);
-			//	$(element).change();
-			//	valueAccessor(place.formatted_address);
-			//
-			//	console.log("———————————————————");
-			//	console.log("The place has changed!");
-			//	console.log(place.formatted_address);
-			//	console.log(valueAccessor());
-			//	console.log(valueAccessor);
-			//	console.log($(element).val());
-			//	console.log("———————————————————");
-			//});
+			var autocomplete = new google.maps.places.Autocomplete(
+				element, {types: ['(cities)']});
+
+
+			autocomplete.addListener('place_changed', function(){
+				var place = autocomplete.getPlace();
+
+				$(element).val(place.formatted_address);
+				$(element).change();
+				valueAccessor(place.formatted_address);
+
+				console.log("———————————————————");
+				console.log("The place has changed!");
+				console.log(place.formatted_address);
+				console.log(valueAccessor());
+				console.log(valueAccessor);
+				console.log($(element).val());
+				console.log("———————————————————");
+			});
 			
 
 		},
@@ -391,12 +391,12 @@ $(function() {
 
 			console.log("------------------------------");
 			console.log(bindingContext.$data.location());
-			console.log(bindingContext.$parent.stops()[bindingContext.$index()-1].location);
+			console.log(bindingContext.$parent.stops()[bindingContext.$index()-1].location());
 			console.log("------------------------------");
 
 
 			var from = bindingContext.$data.location();
-			var to = bindingContext.$parent.stops()[bindingContext.$index()-1].location;
+			var to = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 
 			var map = new google.maps.Map(element, {
 				scrollwheel: false,
