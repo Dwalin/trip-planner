@@ -367,6 +367,7 @@ $(function() {
 				console.log("———————————————————");
 				console.log("The place has changed!");
 				console.log(place.formatted_address);
+				console.log(valueAccessor);
 				console.log("———————————————————");
 
 				$(element).val(place.formatted_address);
