@@ -392,8 +392,7 @@ $(function() {
 			console.log("------------------------------");
 			console.log(bindingContext);
 			console.log(bindingContext.$parent);
-			console.log(bindingContext.$parent.location);
-			console.log(bindingContext.$parent().location);
+			console.log(bindingContext.$parent.location());
 			console.log("------------------------------");
 
 
