@@ -368,6 +368,7 @@ $(function() {
 				console.log(place.formatted_address);
 				console.log("———————————————————");
 
+				$(element).val(place.formatted_address);
 				valueAccessor(place.formatted_address);
 			});
 
