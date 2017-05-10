@@ -395,31 +395,34 @@ $(function() {
 			console.log("------------------------------");
 
 
-			var from = bindingContext.$data.location();
-			var to = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
+			var to   = bindingContext.$data.location();
+			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 
-			var map = new google.maps.Map(element, {
-				scrollwheel: false,
-				zoom: 7
-			});
+			if (from != undefined) {
+				var map = new google.maps.Map(element, {
+					scrollwheel: false,
+					zoom: 7
+				});
 
-			var directionsDisplay = new google.maps.DirectionsRenderer({
-				map: map
-			});
+				var directionsDisplay = new google.maps.DirectionsRenderer({
+					map: map
+				});
 
-			var request = {
-				origin: from,
-				destination: to,
-				travelMode: 'DRIVING'
-			};
+				var request = {
+					origin: from,
+					destination: to,
+					travelMode: 'DRIVING'
+				};
 
-			var directionsService = new google.maps.DirectionsService();
-			directionsService.route(request, function(response, status) {
-				if (status == 'OK') {
-					// Display the route on the map.
-					directionsDisplay.setDirections(response);
-				}
-			});
+				var directionsService = new google.maps.DirectionsService();
+				directionsService.route(request, function(response, status) {
+					if (status == 'OK') {
+						// Display the route on the map.
+						directionsDisplay.setDirections(response);
+					}
+				});
+			}
+
 
 		},
 		update: function(element, valueAccessor, allBindings) {
