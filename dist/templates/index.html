@@ -72,7 +72,7 @@
 
 		<span data-bind="text: ('Id is ' + trip().id) "></span>
 
-		<input placeholder="Give a name for your trip" class="trip-header__name" data-bind="value: trip().title, event: {change: trip().updateName}">
+		<input placeholder="Give a name for your trip" class="trip-header__name mj-input" data-bind="value: trip().title, event: {change: trip().updateName}">
 
 	</div>
 
@@ -84,13 +84,13 @@
 	<article class="trip-stop">
 
 		<header class="trip-stop__place">
-			<input class="trip-stop__input" data-bind="value: location, event: {change: update}, geocomplete" type="text" placeholder="Type a location.">
-			<input class="trip-stop__input" data-bind="value: name, event: {change: update}" type="text" placeholder="Type a name.">
+			<input class="trip-stop__input mj-input" data-bind="value: location, event: {change: update}, geocomplete" type="text" placeholder="Type a location.">
+			<input class="trip-stop__input mj-input" data-bind="value: name, event: {change: update}" type="text" placeholder="Type a name.">
 		</header>
 
 
 		<section class="trip-stop__delete">
-			<button class="trip-button" data-bind="click: $parent.deleteStop">
+			<button class="trip-button mj-button" data-bind="click: $parent.deleteStop">
 				Delete this stop
 			</button>
 		</section>
@@ -147,7 +147,7 @@
 	<div class="trip-footer">
 
 		<section class="trip-plan__add">
-			<button class="trip-button" data-bind="event: {click: trip().addNewStop}">
+			<button class="trip-button mj-button" data-bind="event: {click: trip().addNewStop}">
 				Add a new stop
 			</button>
 		</section>
