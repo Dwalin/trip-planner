@@ -81,7 +81,7 @@ $(function() {
 
 					$.ajax({
 						type: "POST",
-						url: "http://travel.done.report/api/users/register",
+						url: "https://travel.done.report/api/users/register",
 						data: data,
 						dataType: "JSON",
 						success: function(data) {
@@ -108,7 +108,7 @@ $(function() {
 
 					$.ajax({
 						type: "POST",
-						url: "http://travel.done.report/api/users/login",
+						url: "https://travel.done.report/api/users/login",
 						data: data,
 						dataType: "JSON",
 						success: function(data) {
@@ -133,7 +133,7 @@ $(function() {
 		self.logOut = function() {
 			$.ajax({
 				type: "GET",
-				url: "http://travel.done.report/api/users/logout",
+				url: "https://travel.done.report/api/users/logout",
 				dataType: "JSON",
 				success: function(data) {
 					self.loggedIn(false);
@@ -151,7 +151,7 @@ $(function() {
 			$.ajax({
 				dataType: "json",
 				data: "",
-				url: "http://travel.done.report/api/users/current",
+				url: "https://travel.done.report/api/users/current",
 				success: function(data) {
 					log("Logged in.");
 					self.loggedIn(true);
@@ -181,7 +181,7 @@ $(function() {
 			$.ajax({
 				dataType: "json",
 				data: "",
-				url: "http://travel.done.report/api/trip/",
+				url: "https://travel.done.report/api/trip/",
 				success: function(data) {
 					log("Getting trip data.");
 					self.trip( new tripVM(data.data[0]) );
@@ -219,7 +219,7 @@ $(function() {
 				data: {
 					trip_id: self.id
 				},
-				url: "http://travel.done.report/api/stop/",
+				url: "https://travel.done.report/api/stop/",
 				success: function(data) {
 					log("Created new stop");
 					log(data);
@@ -240,7 +240,7 @@ $(function() {
 					id: self.id,
 					title: self.title
 				},
-				url: "http://travel.done.report/api/trip/",
+				url: "https://travel.done.report/api/trip/",
 				success: function(data) {
 					log("Updated trip Title.");
 					log(data);
@@ -259,7 +259,7 @@ $(function() {
 			$.ajax({
 				dataType: "json",
 				type: "DELETE",
-				url: "http://travel.done.report/api/stop/" + item.id(),
+				url: "https://travel.done.report/api/stop/" + item.id(),
 				success: function(data) {
 					log("Deleted a stop.");
 					self.stops.remove(item);
@@ -272,7 +272,7 @@ $(function() {
 			});
 		};
 
-		render("http://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops, "Stops");
+		render("https://travel.done.report/api/trip/" + self.id + "/stops/", stopVM, self.stops, "Stops");
 
 
 	};
@@ -303,7 +303,7 @@ $(function() {
 					name: self.name,
 					location: self.location
 				},
-				url: "http://travel.done.report/api/stop/",
+				url: "https://travel.done.report/api/stop/",
 				success: function(data) {
 					log("Updated a stop.");
 					log(data);
@@ -315,7 +315,7 @@ $(function() {
 			});
 		};
 
-		//render("http://travel.done.report/api/stop/" + self.id() + "/", dayVM, self.days);
+		//render("https://travel.done.report/api/stop/" + self.id() + "/", dayVM, self.days);
 
 
 	};
@@ -331,7 +331,7 @@ $(function() {
 
 		self.plans     = ko.observableArray();
 
-		render("http://travel.done.report/api/trip/stop/" + self.number() + "/", planVM, self.plans);
+		render("https://travel.done.report/api/trip/stop/" + self.number() + "/", planVM, self.plans);
 
 
 	};
