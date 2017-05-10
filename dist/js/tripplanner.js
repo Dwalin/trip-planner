@@ -358,25 +358,25 @@ $(function() {
 		init: function(element, valueAccessor, allBindings) {
 
 
-			var autocomplete = new google.maps.places.Autocomplete(
-				element, {types: ['(cities)']});
-
-
-			autocomplete.addListener('place_changed', function(){
-				var place = autocomplete.getPlace();
-
-				$(element).val(place.formatted_address);
-				$(element).change();
-				valueAccessor(place.formatted_address);
-
-				console.log("———————————————————");
-				console.log("The place has changed!");
-				console.log(place.formatted_address);
-				console.log(valueAccessor());
-				console.log(valueAccessor);
-				console.log($(element).val());
-				console.log("———————————————————");
-			});
+			//var autocomplete = new google.maps.places.Autocomplete(
+			//	element, {types: ['(cities)']});
+			//
+			//
+			//autocomplete.addListener('place_changed', function(){
+			//	var place = autocomplete.getPlace();
+			//
+			//	$(element).val(place.formatted_address);
+			//	$(element).change();
+			//	valueAccessor(place.formatted_address);
+			//
+			//	console.log("———————————————————");
+			//	console.log("The place has changed!");
+			//	console.log(place.formatted_address);
+			//	console.log(valueAccessor());
+			//	console.log(valueAccessor);
+			//	console.log($(element).val());
+			//	console.log("———————————————————");
+			//});
 			
 
 		},
