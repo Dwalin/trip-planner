@@ -362,16 +362,15 @@ $(function() {
 
 			autocomplete.addListener('place_changed', function(){
 				var place = autocomplete.getPlace();
+
+				console.log("———————————————————");
+				console.log("The place has changed!");
 				console.log(place.formatted_address);
+				console.log("———————————————————");
+
 				valueAccessor(place.formatted_address);
 			});
 
-		},
-		update: function(element, valueAccessor, allBindings) {
-
-			var value = valueAccessor();
-			var valueUnwrapped = ko.unwrap(value);
-			console.log("Value is " + valueUnwrapped);
 		}
 	};
 	
