@@ -356,8 +356,10 @@ $(function() {
 
 	ko.bindingHandlers.geocomplete = {
 		init: function(element, valueAccessor, allBindings) {
+
+
 			var autocomplete = new google.maps.places.Autocomplete(
-				element, {types: ['geocode']});
+				element, {types: ['(cities)']});
 
 
 			autocomplete.addListener('place_changed', function(){

@@ -81,6 +81,12 @@
 	<!-- ko foreach: trip -->
 	<!-- ko foreach: stops -->
 
+
+	<!-- ko if: $index() != 0  -->
+		Has previous element <span data-bind="text: $parent.elems()[$index() - 1].name"></span>
+	<!-- /ko -->
+
+
 	<article class="trip-stop">
 
 		<header class="trip-stop__place">
