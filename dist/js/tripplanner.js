@@ -390,9 +390,6 @@ $(function() {
 	ko.bindingHandlers.direction = {
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-		},
-		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-
 			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 			var to   = bindingContext.$data.location();
 
@@ -423,6 +420,9 @@ $(function() {
 					}
 				});
 			}
+
+		},
+		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 		}
 	};
