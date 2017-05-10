@@ -394,13 +394,13 @@ $(function() {
 		},
 		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-			console.log("------------------------------");
-			console.log(bindingContext.$parent.stops()[bindingContext.$index()-1].location());
-			console.log(bindingContext.$data.location());
-			console.log("------------------------------");
-
 			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 			var to   = bindingContext.$data.location();
+
+			console.log("------------------------------");
+			console.log("From " + from);
+			console.log("To " + to);
+			console.log("------------------------------");
 
 			if (from != undefined) {
 				var map = new google.maps.Map(element, {
