@@ -385,11 +385,10 @@ $(function() {
 		}
 	};
 
+	var directionsService = new google.maps.DirectionsService();
+
 	ko.bindingHandlers.direction = {
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-
-
-
 
 		},
 		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -418,10 +417,8 @@ $(function() {
 					travelMode: 'DRIVING'
 				};
 
-				var directionsService = new google.maps.DirectionsService();
 				directionsService.route(request, function(response, status) {
 					if (status == 'OK') {
-						// Display the route on the map.
 						directionsDisplay.setDirections(response);
 					}
 				});
