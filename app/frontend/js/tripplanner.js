@@ -364,22 +364,23 @@ $(function() {
 			autocomplete.addListener('place_changed', function(){
 				var place = autocomplete.getPlace();
 
+				$(element).val(place.formatted_address);
+				$(element).change();
+				valueAccessor(place.formatted_address);
 
+				console.log("———————————————————");
+				console.log("The place has changed!");
+				console.log(place.formatted_address);
+				console.log(valueAccessor());
+				console.log(valueAccessor);
+				console.log($(element).val());
+				console.log("———————————————————");
 			});
 			
 
 		},
 		update: function(element, valueAccessor, allBindings) {
-			//$(element).val(place.formatted_address);
-			//valueAccessor(place.formatted_address);
 
-			console.log("———————————————————");
-			console.log("The place has changed!");
-			//console.log(place.formatted_address);
-			console.log(valueAccessor());
-			console.log(valueAccessor);
-			console.log($(element).val());
-			console.log("———————————————————");
 		}
 	};
 	
