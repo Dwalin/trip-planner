@@ -388,6 +388,9 @@ $(function() {
 	ko.bindingHandlers.direction = {
 		init: function(element, valueAccessor, allBindings) {
 
+			var chicago = {lat: 41.85, lng: -87.65};
+			var indianapolis = {lat: 39.79, lng: -86.14};
+
 			var map = new google.maps.Map(element, {
 				scrollwheel: false,
 				zoom: 7
