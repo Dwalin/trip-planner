@@ -11,6 +11,10 @@ var direction   = require('leaflet-routing-machine');
 
 $(function() {
 
+	const provider = new geosearch.OpenStreetMapProvider();
+	const searchControl = new geosearch.GeoSearchControl({
+		provider: provider
+	});
 
 	var timer = (new Date()).getTime();
 
@@ -386,32 +390,19 @@ $(function() {
 			});
 			
 
-		},
-		update: function(element, valueAccessor, allBindings) {
-
 		}
 	};
 
 	ko.bindingHandlers.direction = {
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-			const provider = new geosearch.OpenStreetMapProvider();
-
-			const searchControl = new geosearch.GeoSearchControl({
-				provider: provider
-			});
-
 			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 			var to   = bindingContext.$data.location();
-
-			//console.log("------------------------------");
-			//console.log("From " + from);
-			//console.log("To " + to);
-			//console.log("------------------------------");
 
 			console.log("------------------------------");
 			console.log(bindingContext.$data);
 			console.log("------------------------------");
+
 
 
 			if (to != null) {
@@ -430,13 +421,6 @@ $(function() {
 								coordFrom = [resultFrom[0].y, resultFrom[0].x];
 								coordTo   = [resultTo[0].y,   resultTo[0].x];
 
-								//console.log("------------------------------");
-								//console.log("------------------------------");
-								//console.log(coordFrom, coordTo);
-								//console.log("------------------------------");
-								//console.log("------------------------------");
-
-
 								var map = L.map(element).fitBounds([coordFrom, coordTo]);
 
 								L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw', {
@@ -445,11 +429,6 @@ $(function() {
 									id: 'trip-planner',
 									accessToken: 'pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw'
 								}).addTo(map);
-
-
-								//L.Routing.line(
-								//	L.Routing.iRouter([coordFrom, coordTo])
-								//).addTo(map);
 
 								var route = L.Routing.control({
 									waypoints: [
@@ -461,16 +440,6 @@ $(function() {
 
 								route.on('routesfound', function(e) {
 									var routes = e.routes;
-
-									//console.log("------------------------------");
-									//console.log("------------------------------");
-									//log("Routes: ");
-									//log(routes);
-									//log(routes[0]);
-									//log(routes[0].summary.totalDistance);
-									//log(routes[0].summary.totalTime);
-									//console.log("------------------------------");
-									//console.log("------------------------------");
 
 									bindingContext.$data.distance( routes[0].summary.totalDistance / 1000);
 									bindingContext.$data.time( routes[0].summary.totalTime / 60 / 60 );

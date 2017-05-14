@@ -110,12 +110,17 @@
 
 			<!--<h3>MAP</h3>-->
 
-			<div class="trip-direction" data-bind="direction"></div>
+			<div class="trip-direction" data-bind="direction">
+
+				<input name="from" type="hidden" data-bind="value: $parent.stops()[$index() - 1].location()">
+				<input name="to"   type="hidden" data-bind="value: location">
+			</div>
 
 			<div class="trip-direction__summary">
 				<span class="" data-bind="text: distance() + ' km'"></span>
 				<span class="" data-bind="text: time() + ' hours'"></span>
 			</div>
+
 
 			<!--<span data-bind="text: $parent.stops()[$index() - 1].location()"></span> — <span data-bind="text: location"></span>-->
 
