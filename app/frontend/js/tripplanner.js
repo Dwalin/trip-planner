@@ -284,8 +284,6 @@ $(function() {
 	};
 
 
-
-
 	var stopVM = function(data) {
 		var self = this;
 
@@ -296,6 +294,10 @@ $(function() {
 		self.name         = ko.observable(data.name);
 		self.location     = ko.observable(data.location);
 		self.days         = ko.observableArray();
+
+		self.distance     = ko.observable(0);
+		self.time         = ko.observable(0);
+
 
 		self.days = ko.observableArray();
 
@@ -403,9 +405,13 @@ $(function() {
 			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 			var to   = bindingContext.$data.location();
 
+			//console.log("------------------------------");
+			//console.log("From " + from);
+			//console.log("To " + to);
+			//console.log("------------------------------");
+
 			console.log("------------------------------");
-			console.log("From " + from);
-			console.log("To " + to);
+			console.log(valueAccessor());
 			console.log("------------------------------");
 
 
@@ -462,8 +468,13 @@ $(function() {
 									log("Routes: ");
 									log(routes);
 									log(routes[0]);
+									log(routes[0].summary.totalDistance);
+									log(routes[0].summary.totalTime);
 									console.log("------------------------------");
 									console.log("------------------------------");
+
+
+
 								});
 
 								route.addTo(map);
