@@ -449,7 +449,10 @@ $(function() {
 										coordFrom,
 										coordTo
 									]
-								}).addTo(map);
+								}).itinerary({
+									show: false
+								})
+								.addTo(map);
 
 							});
 					});
