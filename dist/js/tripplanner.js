@@ -11,9 +11,9 @@ var geosearch   = require('leaflet-geosearch');
 $(function() {
 
 
-	const provider = new OpenStreetMapProvider();
+	const provider = new geosearch.OpenStreetMapProvider();
 
-	const searchControl = new GeoSearchControl({
+	const searchControl = new geosearch.GeoSearchControl({
 		provider: provider
 	});
 
