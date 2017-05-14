@@ -425,7 +425,7 @@ $(function() {
 						log(result);
 						console.log("------------------------------");
 
-						var map = L.map(element).setView(coord, 5);
+						var map = L.map(element);
 						//map.addControl(searchControl);
 
 						L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw', {
@@ -434,6 +434,8 @@ $(function() {
 							id: 'trip-planner',
 							accessToken: 'pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw'
 						}).addTo(map);
+
+						map.setView(coord, 5);
 					});
 
 
