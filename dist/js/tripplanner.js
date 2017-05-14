@@ -12,13 +12,6 @@ var direction   = require('leaflet-routing-machine');
 $(function() {
 
 
-	const provider = new geosearch.OpenStreetMapProvider();
-
-	const searchControl = new geosearch.GeoSearchControl({
-		provider: provider
-	});
-
-
 	var timer = (new Date()).getTime();
 
 	function log(text) {
@@ -400,6 +393,12 @@ $(function() {
 	ko.bindingHandlers.direction = {
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+			const provider = new geosearch.OpenStreetMapProvider();
+
+			const searchControl = new geosearch.GeoSearchControl({
+				provider: provider
+			});
+
 			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 			var to   = bindingContext.$data.location();
 
@@ -417,8 +416,6 @@ $(function() {
 				provider
 					.search({query: from})
 					.then(function(resultFrom){
-
-
 
 						provider
 							.search({query: to})
