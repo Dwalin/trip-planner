@@ -400,12 +400,13 @@ $(function() {
 			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 			var to   = bindingContext.$data.location();
 
-			console.log("------------------------------");
-			console.log(bindingContext.$data);
-			console.log("------------------------------");
+			//console.log("------------------------------");
+			//console.log(bindingContext.$data);
+			//console.log("------------------------------");
 
-			var inputs = $(element).siblings('input');
-			inputs.on('change', function(){
+			//var inputs = $(element).siblings('input');
+
+			bindingContext.$data.location.subscribe(function(){
 				log("OLOLO!!!");
 			});
 
