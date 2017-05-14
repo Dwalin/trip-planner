@@ -457,7 +457,9 @@ $(function() {
 
 								console.log("------------------------------");
 								console.log("------------------------------");
-								log(route.getRouter());
+								route.getRouter(function(error, routeSummary){
+									log(routeSummary);
+								});
 								console.log("------------------------------");
 								console.log("------------------------------");
 
