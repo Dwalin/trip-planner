@@ -472,8 +472,8 @@ $(function() {
 									//console.log("------------------------------");
 									//console.log("------------------------------");
 
-									bindingContext.$data.distance(routes[0].summary.totalDistance);
-									bindingContext.$data.time(routes[0].summary.totalTime);
+									bindingContext.$data.distance( routes[0].summary.totalDistance / 1000);
+									bindingContext.$data.time( routes[0].summary.totalTime / 60 / 60 );
 
 
 								});
