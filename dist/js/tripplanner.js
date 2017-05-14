@@ -442,6 +442,9 @@ $(function() {
 
 
 								L.Routing.control({
+									router: new L.Routing.osrmv1({
+										serviceUrl: 'http://map.project-osrm.org/'
+									}),
 									waypoints: [
 										coordFrom,
 										coordTo

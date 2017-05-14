@@ -443,6 +443,7 @@ $(function() {
 
 
 								L.Routing.control({
+									router: new L.Routing.osrmv1(),
 									waypoints: [
 										coordFrom,
 										coordTo
