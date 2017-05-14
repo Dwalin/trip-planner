@@ -396,9 +396,6 @@ $(function() {
 	ko.bindingHandlers.direction = {
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-			var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
-			var to   = bindingContext.$data.location();
-
 			var map = L.map(element);
 			L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw', {
 				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -486,6 +483,9 @@ $(function() {
 			});
 
 			if (to != null) {
+
+				var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
+				var to   = bindingContext.$data.location();
 
 				var coordFrom = {};
 				var coordTo   = {};
