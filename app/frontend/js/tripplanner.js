@@ -411,7 +411,7 @@ $(function() {
 			//console.log("------------------------------");
 
 			console.log("------------------------------");
-			console.log(valueAccessor());
+			console.log(valueAccessor);
 			console.log("------------------------------");
 
 

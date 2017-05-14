@@ -336,3 +336,6 @@ body * {
   width: 500px;
   height: 320px;
 }
+.leaflet-routing-alternatives-container {
+  display: none;
+}
