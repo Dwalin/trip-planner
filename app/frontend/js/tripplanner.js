@@ -459,6 +459,7 @@ $(function() {
 								console.log("------------------------------");
 								console.log("------------------------------");
 								route.getRouter(function(error, routeSummary){
+									console.log("Ololo!");
 									log(routeSummary);
 								});
 								console.log("------------------------------");
