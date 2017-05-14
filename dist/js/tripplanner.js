@@ -410,7 +410,7 @@ $(function() {
 			//console.log("------------------------------");
 
 			console.log("------------------------------");
-			console.log(valueAccessor);
+			console.log(bindingContext.$data);
 			console.log("------------------------------");
 
 
