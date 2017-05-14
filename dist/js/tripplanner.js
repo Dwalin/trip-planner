@@ -316,8 +316,8 @@ $(function() {
 				},
 				url: "https://travel.done.report/api/stop/",
 				success: function(data) {
-					log("Updated a stop.");
-					log(data);
+					//log("Updated a stop.");
+					//log(data);
 				},
 				error: function(data) {
 					log("Could not update a stop");
