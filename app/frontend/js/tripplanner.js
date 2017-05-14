@@ -412,11 +412,14 @@ $(function() {
 
 			if (to != null) {
 
-				var coord = {};
+				var coordFrom = {};
+				var coordTo   = {};
 
 				provider
 					.search({query: from})
 					.then(function(resultFrom){
+
+
 
 						provider
 							.search({query: to})
