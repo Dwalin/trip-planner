@@ -410,8 +410,6 @@ $(function() {
 
 			if (to != null) {
 
-				//var map = L.map(element).setView([51.505, -0.09], 13);
-
 				var coord = {};
 
 				provider
@@ -424,7 +422,9 @@ $(function() {
 						log(result);
 						console.log("------------------------------");
 
-						var map = L.map(element);
+						//var map = L.map(element);
+						var map = L.map(element).setView([51.505, -0.09], 13);
+
 						map.addControl(searchControl);
 
 						L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw', {
@@ -434,7 +434,7 @@ $(function() {
 							accessToken: 'pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw'
 						}).addTo(map);
 
-						map.setView(coord, 5);
+						//map.setView(coord, 5);
 					});
 
 
