@@ -423,91 +423,64 @@ $(function() {
 			});
 
 
-			//bindingContext.$data.location.subscribe(function(location){
-			//	if (to != null) {
-			//
-			//		var coordFrom = {};
-			//		var coordTo   = {};
-			//
-			//		provider
-			//			.search({query: bindingContext.$parent.stops()[bindingContext.$index()-1].location()})
-			//			.then(function(resultFrom){
-			//
-			//				provider
-			//					.search({query: bindingContext.$data.location()})
-			//					.then(function(resultTo){
-			//
-			//						coordFrom = [resultFrom[0].y, resultFrom[0].x];
-			//						coordTo   = [resultTo[0].y,   resultTo[0].x];
-			//
-			//						map.fitBounds([coordFrom, coordTo]);
-			//
-			//
-			//
-			//						route.on('routesfound', function(e) {
-			//							var routes = e.routes;
-			//							bindingContext.$data.distance( routes[0].summary.totalDistance / 1000);
-			//							bindingContext.$data.time( routes[0].summary.totalTime / 60 / 60 );
-			//						});
-			//
-			//						route.addTo(map);
-			//
-			//					});
-			//			});
-			//
-			//	}
-			//});
-			//
-			//bindingContext.$parent.stops()[bindingContext.$index()-1].location.subscribe(function(){
-			//	if (to != null) {
-			//
-			//		var coordFrom = {};
-			//		var coordTo   = {};
-			//
-			//		provider
-			//			.search({query: from})
-			//			.then(function(resultFrom){
-			//
-			//				provider
-			//					.search({query: to})
-			//					.then(function(resultTo){
-			//
-			//						coordFrom = [resultFrom[0].y, resultFrom[0].x];
-			//						coordTo   = [resultTo[0].y,   resultTo[0].x];
-			//
-			//						map.fitBounds([coordFrom, coordTo]);
-			//
-			//						L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw', {
-			//							attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			//							maxZoom: 12,
-			//							id: 'trip-planner',
-			//							accessToken: 'pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw'
-			//						}).addTo(map);
-			//
-			//						var route = L.Routing.control({
-			//							waypoints: [
-			//								coordFrom,
-			//								coordTo
-			//							],
-			//							router: L.Routing.mapbox('pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw')
-			//						});
-			//
-			//						route.on('routesfound', function(e) {
-			//							var routes = e.routes;
-			//
-			//							bindingContext.$data.distance( routes[0].summary.totalDistance / 1000);
-			//							bindingContext.$data.time( routes[0].summary.totalTime / 60 / 60 );
-			//
-			//
-			//						});
-			//
-			//						route.addTo(map);
-			//
-			//					});
-			//			});
-			//
-			//	}
-			//});
+			bindingContext.$data.location.subscribe(function(location){
+				if (to != null) {
+
+					provider
+						.search({query: bindingContext.$parent.stops()[bindingContext.$index()-1].location()})
+						.then(function(resultFrom){
+							provider
+								.search({query: bindingContext.$data.location()})
+								.then(function(resultTo){
+
+									coordFrom = [resultFrom[0].y, resultFrom[0].x];
+									coordTo   = [resultTo[0].y,   resultTo[0].x];
+
+									map.fitBounds([coordFrom, coordTo]);
+
+									route.setWaypoints([
+										coordFrom,
+										coordTo
+									]);
+
+									route.addTo(map);
+
+								});
+						});
+
+				}
+			});
+
+			bindingContext.$parent.stops()[bindingContext.$index()-1].location.subscribe(function(){
+				if (to != null) {
+
+					var coordFrom = {};
+					var coordTo   = {};
+
+					provider
+						.search({query: bindingContext.$parent.stops()[bindingContext.$index()-1].location()})
+						.then(function(resultFrom){
+							provider
+								.search({query: bindingContext.$data.location()})
+								.then(function(resultTo){
+
+									coordFrom = [resultFrom[0].y, resultFrom[0].x];
+									coordTo   = [resultTo[0].y,   resultTo[0].x];
+
+									map.fitBounds([coordFrom, coordTo]);
+
+									route.setWaypoints([
+										coordFrom,
+										coordTo
+									]);
+
+									route.addTo(map);
+
+								});
+						});
+
+				}
+			});
 
 			if (to != null) {
 
