@@ -2,6 +2,7 @@ var $           = require('jquery');
 var ui          = require('jquery-ui-browserify');
 var d3          = require('d3');
 var ko          = require('knockout');
+var L           = require('leaflet');
 
 
 $(function() {
@@ -384,7 +385,6 @@ $(function() {
 		}
 	};
 
-	var directionsService = new google.maps.DirectionsService();
 
 	ko.bindingHandlers.direction = {
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -398,36 +398,8 @@ $(function() {
 			console.log("------------------------------");
 
 
-
 			if (to != null) {
-
-				setTimeout(
-					function(){
-
-						var map = new google.maps.Map(element, {
-							scrollwheel: false,
-							zoom: 7
-						});
-
-						var directionsDisplay = new google.maps.DirectionsRenderer({
-							map: map
-						});
-
-						var request = {
-							origin: from,
-							destination: to,
-							travelMode: 'DRIVING'
-						};
-
-						directionsService.route(request, function(response, status) {
-							if (status == 'OK') {
-								directionsDisplay.setDirections(response);
-							}
-						});
-
-					}, (1000 + 10000*Math.random())
-				);
-
+				var map = L.map(element).setView([51.505, -0.09], 13);
 			}
 
 		},

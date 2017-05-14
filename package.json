@@ -4,7 +4,8 @@
   "description": "App for trip planning.",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "leaflet": "^1.0.3"
   },
   "devDependencies": {
     "@types/node": "^6.0.73",
