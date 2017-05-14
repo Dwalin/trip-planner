@@ -442,7 +442,7 @@ $(function() {
 
 
 								L.Routing.line(
-									L.Routing.iRouter.route([coordFrom, coordTo])
+									L.Routing.iRouter([coordFrom, coordTo])
 								).addTo(map);
 
 							});
