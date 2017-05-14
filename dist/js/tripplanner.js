@@ -445,14 +445,21 @@ $(function() {
 								//	L.Routing.iRouter([coordFrom, coordTo])
 								//).addTo(map);
 
-								L.Routing.control({
-									show: false,
+								var route = L.Routing.control({
 									waypoints: [
 										coordFrom,
 										coordTo
 									],
 									router: L.Routing.mapbox('pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw')
-								}).addTo(map);
+								});
+
+								route.addTo(map);
+
+								console.log("------------------------------");
+								console.log("------------------------------");
+								log(route.getRouter());
+								console.log("------------------------------");
+								console.log("------------------------------");
 
 							});
 					});
