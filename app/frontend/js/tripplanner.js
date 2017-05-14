@@ -457,11 +457,11 @@ $(function() {
 								route.on('routesfound', function(e) {
 									var routes = e.routes;
 
-
 									console.log("------------------------------");
 									console.log("------------------------------");
 									log("Routes: ");
-									log(routes.length);
+									log(routes);
+									log(routes[0]);
 									console.log("------------------------------");
 									console.log("------------------------------");
 								});
