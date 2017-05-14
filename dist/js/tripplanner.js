@@ -462,16 +462,18 @@ $(function() {
 								route.on('routesfound', function(e) {
 									var routes = e.routes;
 
-									console.log("------------------------------");
-									console.log("------------------------------");
-									log("Routes: ");
-									log(routes);
-									log(routes[0]);
-									log(routes[0].summary.totalDistance);
-									log(routes[0].summary.totalTime);
-									console.log("------------------------------");
-									console.log("------------------------------");
+									//console.log("------------------------------");
+									//console.log("------------------------------");
+									//log("Routes: ");
+									//log(routes);
+									//log(routes[0]);
+									//log(routes[0].summary.totalDistance);
+									//log(routes[0].summary.totalTime);
+									//console.log("------------------------------");
+									//console.log("------------------------------");
 
+									bindingContext.$data.distance(routes[0].summary.totalDistance);
+									bindingContext.$data.time(routes[0].summary.totalTime);
 
 
 								});
