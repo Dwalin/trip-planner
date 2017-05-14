@@ -415,7 +415,7 @@ $(function() {
 				provider
 					.search({query: from})
 					.then(function(result){
-						coord = [result[0].x, result[0].y];
+						coord = [result[0].y, result[0].x];
 
 						console.log("------------------------------");
 						log("Geosearch:");
