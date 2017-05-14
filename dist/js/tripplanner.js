@@ -443,7 +443,7 @@ $(function() {
 
 								L.Routing.control({
 									router: new L.Routing.osrmv1({
-										serviceUrl: 'http://router.project-osrm.org/'
+										serviceUrl: 'https://router.project-osrm.org/'
 									}),
 									waypoints: [
 										coordFrom,
