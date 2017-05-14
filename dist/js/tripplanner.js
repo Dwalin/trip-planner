@@ -4,6 +4,7 @@ var d3          = require('d3');
 var ko          = require('knockout');
 var L           = require('leaflet');
 var geosearch   = require('leaflet-geosearch');
+var direction   = require('leaflet-routing-machine');
 
 //use strict;
 //import { OpenStreetMapProvider } from 'leaflet-geosearch';
@@ -414,27 +415,32 @@ $(function() {
 
 				provider
 					.search({query: from})
-					.then(function(result){
-						coord = [result[0].y, result[0].x];
+					.then(function(resultFrom){
 
-						console.log("------------------------------");
-						log("Geosearch:");
-						log(result);
-						log(coord);
-						console.log("------------------------------");
+						provider
+							.search({query: to})
+							.then(function(resultTo){
 
-						//var map = L.map(element);
-						var map = L.map(element).setView(coord, 5);
+								coordFrom = [resultFrom[0].y, resultFrom[0].x];
+								coordTo   = [resultTo[0].y,   resultTo[0].x];
 
-						//map.addControl(searchControl);
+								var map = L.map(element).setView(coord, 8);
 
-						L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw', {
-							attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-							maxZoom: 12,
-							id: 'trip-planner',
-							accessToken: 'pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw'
-						}).addTo(map);
+								L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw', {
+									attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+									maxZoom: 12,
+									id: 'trip-planner',
+									accessToken: 'pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw'
+								}).addTo(map);
 
+								L.Routing.control({
+									waypoints: [
+										L.latLng(coordFrom),
+										L.latLng(coordTo)
+									]
+								}).addTo(map);
+
+							});
 					});
 
 
