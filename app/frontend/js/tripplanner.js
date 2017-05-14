@@ -443,9 +443,8 @@ $(function() {
 
 
 								L.Routing.line(
-									L.Routing.route([coordFrom,coordTo])
-								)
-								.addTo(map);
+									L.Routing.iRouter.route([coordFrom, coordTo])
+								).addTo(map);
 
 							});
 					});
