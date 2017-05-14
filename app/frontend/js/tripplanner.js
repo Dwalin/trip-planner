@@ -442,17 +442,7 @@ $(function() {
 								}).addTo(map);
 
 
-								L.Routing.control({
-									//router: new L.Routing.osrmv1({
-									//	serviceUrl: '//router.project-osrm.org/'
-									//}),
-									waypoints: [
-										coordFrom,
-										coordTo
-									]
-								}).itinerary({
-									show: false
-								})
+								L.Routing.line([coordFrom,coordTo])
 								.addTo(map);
 
 							});
