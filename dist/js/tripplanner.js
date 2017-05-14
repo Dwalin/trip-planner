@@ -441,7 +441,9 @@ $(function() {
 								}).addTo(map);
 
 
-								L.Routing.line([coordFrom,coordTo])
+								L.Routing.line(
+									L.Routing.route([coordFrom,coordTo])
+								)
 								.addTo(map);
 
 							});
