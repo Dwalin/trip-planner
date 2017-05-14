@@ -436,8 +436,8 @@ $(function() {
 
 								L.Routing.control({
 									waypoints: [
-										L.latLng(coordFrom),
-										L.latLng(coordTo)
+										coordFrom,
+										coordTo
 									]
 								}).addTo(map);
 
