@@ -424,11 +424,11 @@ $(function() {
 								coordFrom = [resultFrom[0].y, resultFrom[0].x];
 								coordTo   = [resultTo[0].y,   resultTo[0].x];
 
-								console.log("------------------------------");
-								console.log("------------------------------");
-								console.log(coordFrom, coordTo);
-								console.log("------------------------------");
-								console.log("------------------------------");
+								//console.log("------------------------------");
+								//console.log("------------------------------");
+								//console.log(coordFrom, coordTo);
+								//console.log("------------------------------");
+								//console.log("------------------------------");
 
 
 								var map = L.map(element).fitBounds([coordFrom, coordTo]);
@@ -453,16 +453,20 @@ $(function() {
 									router: L.Routing.mapbox('pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw')
 								});
 
-								route.addTo(map);
+								route.on('routesfound', function(e) {
+									var routes = e.routes;
 
-								console.log("------------------------------");
-								console.log("------------------------------");
-								route.getRouter(function(error, routeSummary){
-									console.log("Ololo!");
-									log(routeSummary);
+
+									console.log("------------------------------");
+									console.log("------------------------------");
+									route.getRouter(function(error, routeSummary){
+										log(e.routes.length);
+									});
+									console.log("------------------------------");
+									console.log("------------------------------");
 								});
-								console.log("------------------------------");
-								console.log("------------------------------");
+
+								route.addTo(map);
 
 							});
 					});
