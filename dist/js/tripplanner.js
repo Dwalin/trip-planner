@@ -448,8 +448,8 @@ $(function() {
 								L.Routing.control({
 									show: false,
 									waypoints: [
-										L.latLng(57.74, 11.94),
-										L.latLng(57.6792, 11.949)
+										coordFrom,
+										coordTo
 									],
 									router: L.Routing.mapbox('pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw')
 								}).addTo(map);
