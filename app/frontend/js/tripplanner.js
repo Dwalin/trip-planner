@@ -420,7 +420,10 @@ $(function() {
 					.then(function(result){
 						coord = [result.x, result.y];
 
+						console.log("------------------------------");
+						log("Geosearch:");
 						log(result);
+						console.log("------------------------------");
 
 						var map = L.map(element).setView(coord, 13);
 						map.addControl(searchControl);
@@ -435,11 +438,6 @@ $(function() {
 
 
 			}
-
-		},
-		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-
-			console.log("Something updated around the direction.")
 
 		}
 	};
