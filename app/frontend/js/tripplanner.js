@@ -485,6 +485,8 @@ $(function() {
 
 			if (to != null) {
 
+				log("Initial.");
+
 				var from = bindingContext.$parent.stops()[bindingContext.$index()-1].location();
 				var to   = bindingContext.$data.location();
 
