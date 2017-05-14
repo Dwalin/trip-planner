@@ -441,9 +441,17 @@ $(function() {
 								}).addTo(map);
 
 
-								L.Routing.line(
-									L.Routing.iRouter([coordFrom, coordTo])
-								).addTo(map);
+								//L.Routing.line(
+								//	L.Routing.iRouter([coordFrom, coordTo])
+								//).addTo(map);
+
+								L.Routing.control({
+									waypoints: [
+										L.latLng(57.74, 11.94),
+										L.latLng(57.6792, 11.949)
+									],
+									router: L.Routing.mapbox('pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw')
+								}).addTo(map);
 
 							});
 					});
