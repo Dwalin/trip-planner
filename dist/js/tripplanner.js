@@ -459,7 +459,8 @@ $(function() {
 									console.log("------------------------------");
 									console.log("------------------------------");
 									log("Routes: ");
-									log(routes.length);
+									log(routes);
+									log(routes[0]);
 									console.log("------------------------------");
 									console.log("------------------------------");
 								});
