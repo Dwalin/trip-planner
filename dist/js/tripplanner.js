@@ -423,6 +423,8 @@ $(function() {
 
 
 			bindingContext.$data.location.subscribe(function(location){
+				log("Change");
+
 				if (to != null) {
 
 					provider
@@ -451,6 +453,8 @@ $(function() {
 			});
 
 			bindingContext.$parent.stops()[bindingContext.$index()-1].location.subscribe(function(){
+				log("Change");
+
 				if (to != null) {
 
 					var coordFrom = {};
