@@ -425,7 +425,7 @@ $(function() {
 						console.log("------------------------------");
 
 						//var map = L.map(element);
-						var map = L.map(element).setView(coord, 10);
+						var map = L.map(element).setView(coord, 5);
 
 						map.addControl(searchControl);
 
