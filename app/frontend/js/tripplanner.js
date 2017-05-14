@@ -444,7 +444,7 @@ $(function() {
 
 								L.Routing.control({
 									router: new L.Routing.osrmv1({
-										serviceUrl: 'https://router.project-osrm.org/'
+										serviceUrl: '//router.project-osrm.org/'
 									}),
 									waypoints: [
 										coordFrom,
