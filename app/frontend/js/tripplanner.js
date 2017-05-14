@@ -446,7 +446,8 @@ $(function() {
 									waypoints: [
 										coordFrom,
 										coordTo
-									]
+									],
+									plan: false
 								}).addTo(map);
 
 							});
