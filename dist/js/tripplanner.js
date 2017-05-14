@@ -445,8 +445,11 @@ $(function() {
 									waypoints: [
 										coordFrom,
 										coordTo
-									],
-									plan: false
+									]
+								}).addTo(map);
+
+								L.Routing.Itinerary({
+									show: false
 								}).addTo(map);
 
 							});
