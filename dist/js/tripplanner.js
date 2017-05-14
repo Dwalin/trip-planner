@@ -403,7 +403,10 @@ $(function() {
 			console.log(bindingContext.$data);
 			console.log("------------------------------");
 
-
+			var inputs = $(element).siblings('input');
+			inputs.on('change', function(){
+				log("OLOLO!!!");
+			});
 
 			if (to != null) {
 
