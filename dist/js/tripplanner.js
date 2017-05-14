@@ -433,6 +433,12 @@ $(function() {
 									accessToken: 'pk.eyJ1Ijoib2tyeXpoYW5pdnNreWkiLCJhIjoiY2oyb2xhcHA0MDAyOTJxcGZrdHQ4ZG0xZyJ9.7h-IQAfbm-AxbXAhEo5grw'
 								}).addTo(map);
 
+								console.log("------------------------------");
+								console.log("------------------------------");
+								console.log(coordFrom, coordTo);
+								console.log("------------------------------");
+								console.log("------------------------------");
+
 								L.Routing.control({
 									waypoints: [
 										coordFrom,
