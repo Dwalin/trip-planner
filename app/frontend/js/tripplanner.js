@@ -382,12 +382,12 @@ $(function() {
 				$(element).change();
 				valueAccessor(place.formatted_address);
 
-				console.log("———————————————————");
-				console.log("The place has changed!");
-				console.log(place.formatted_address);
-				console.log(valueAccessor);
-				console.log($(element).val());
-				console.log("———————————————————");
+				//console.log("———————————————————");
+				//console.log("The place has changed!");
+				//console.log(place.formatted_address);
+				//console.log(valueAccessor);
+				//console.log($(element).val());
+				//console.log("———————————————————");
 			});
 			
 
