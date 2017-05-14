@@ -443,17 +443,13 @@ $(function() {
 
 
 								L.Routing.control({
-									router: new L.Routing.osrmv1({
-										serviceUrl: '//router.project-osrm.org/'
-									}),
+									//router: new L.Routing.osrmv1({
+									//	serviceUrl: '//router.project-osrm.org/'
+									//}),
 									waypoints: [
 										coordFrom,
 										coordTo
 									]
-								}).addTo(map);
-
-								L.Routing.Itinerary({
-									show: false
 								}).addTo(map);
 
 							});
