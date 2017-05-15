@@ -82,7 +82,9 @@
 	<!-- ko foreach: stops -->
 
 
-	<!-- ko if: $index() != 0  -->
+	<article class="trip-stop">
+
+		<!-- ko if: $index() != 0  -->
 
 		<div class="trip-map">
 
@@ -99,10 +101,7 @@
 
 
 		</div>
-	<!-- /ko -->
-
-
-	<article class="trip-stop">
+		<!-- /ko -->
 
 		<header class="trip-stop__place">
 			<input class="trip-stop__input mj-input" data-bind="value: location, event: {change: update}, geocomplete" type="text" placeholder="Type a location.">
