@@ -91,10 +91,12 @@
 			<div class="trip-direction" data-bind="direction">
 			</div>
 
-			<input name="from" type="hidden" data-bind="value: $parent.stops()[$index() - 1].location()">
-			<input name="to"   type="hidden" data-bind="value: location">
-
 			<div class="trip-direction__summary">
+				<h3>Transfer summary:</h3>
+
+				<dl>
+					<dt></dt><dd></dd>
+				</dl>
 				<span class="" data-bind="text: distance() + ' km'"></span>
 				<span class="" data-bind="text: time() + ' hours'"></span>
 			</div>

@@ -295,15 +295,21 @@ body * {
 
 
 .trip-stop {
-  margin-bottom: 40px;
+  padding: 40px;
   box-shadow: 0 10px 10px -14px rgba(0, 0, 0, .25);
 
+  &__place {
+    display: flex;
+  }
 }
 
 .trip-map {
   /*padding: 40px;*/
   /*background-color: rgba(0, 0, 0, .05);*/
   margin-bottom: 40px;
+  position: relative;
+
+  display: flex;
 }
 
 
@@ -312,10 +318,14 @@ body * {
   height: 320px;
   position: relative;
 
+  flex-basis: 500px;
+
+  box-shadow: 0 16px 16px -20px rgba(0, 0, 0, 1);
+
   &__summary {
-    position: absolute;
-    top: 0;
-    left: calc(100% + 40px);
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: calc(100% + 40px);*/
   }
 }
 
