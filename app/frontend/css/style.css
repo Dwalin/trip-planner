@@ -344,6 +344,16 @@ body * {
   position: relative;
   flex-basis: 500px;
   box-shadow: 0 16px 16px -20px #000;
+  margin-right: 40px;
+}
+.trip-direction__summary {
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.trip-direction__summary>* {
+  font-size: 24px;
+  margin-bottom: 40px;
 }
 .leaflet-routing-alternatives-container {
   display: none;

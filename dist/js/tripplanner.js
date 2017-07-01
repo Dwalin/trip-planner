@@ -415,8 +415,8 @@ $(function() {
 			route.on('routesfound', function(e) {
 				var routes = e.routes;
 
-				bindingContext.$data.distance( routes[0].summary.totalDistance / 1000);
-				bindingContext.$data.time( routes[0].summary.totalTime / 60 / 60 );
+				bindingContext.$data.distance( Math.round(routes[0].summary.totalDistance) / 1000);
+				bindingContext.$data.time( Math.round(Math.round(routes[0].summary.totalTime) / 60 / 60 * 10) / 10 );
 
 
 			});

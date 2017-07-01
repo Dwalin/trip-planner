@@ -322,10 +322,19 @@ body * {
 
   box-shadow: 0 16px 16px -20px rgba(0, 0, 0, 1);
 
+  margin-right: 40px;
+
   &__summary {
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: calc(100% + 40px);*/
+
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+
+    &>* {
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+
   }
 }
 
