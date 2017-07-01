@@ -284,7 +284,7 @@ class IndexController extends RestController {
             $response->setStatusCode(201, "Success");
             $response->setJsonContent(
                 array(
-                    'status' => $days->count() . ' stops were found.',
+                    'status' => $days->count() . ' days were found.',
                     'data'   => $days->toArray()
                 )
             );

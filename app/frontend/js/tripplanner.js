@@ -347,6 +347,27 @@ $(function() {
 			});
 		};
 
+		self.deleteDay = function(item) {
+
+			console.log("Deleting a day");
+			console.log(item);
+
+			$.ajax({
+				dataType: "json",
+				type: "DELETE",
+				url: "https://travel.done.report/api/day/" + item.id(),
+				success: function(data) {
+					log("Deleted a day.");
+					self.days.remove(item);
+
+				},
+				error: function(data) {
+					log("Could not delete a day.");
+					log(data);
+				}
+			});
+		};
+
 		render("https://travel.done.report/api/stop/" + self.id() + "/days/", dayVM, self.days, "Days ");
 
 
@@ -373,7 +394,7 @@ $(function() {
 					name: self.title,
 					date: self.date
 				},
-				url: "https://travel.done.report/api/stop/",
+				url: "https://travel.done.report/api/day/",
 				success: function(data) {
 					log("Updated a day.");
 					log(data);
