@@ -599,6 +599,7 @@ var render = function(url, viewModel, property, comment) {
 		},
 		error: function(data) {
 			console.log(comment + " were not found.");
+			console.log(url);
 			return false;
 		}
 	});
