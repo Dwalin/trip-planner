@@ -377,7 +377,7 @@ $(function() {
 		var self = this;
 
 		self.id        = ko.observable(data.id);
-		self.title     = ko.observable(data.title);
+		self.title     = ko.observable(data.name);
 		//self.number    = ko.observable(data.number);
 		self.date      = ko.observable(data.date);
 		self.complete  = ko.observable(data.completed);

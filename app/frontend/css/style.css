@@ -335,8 +335,18 @@ body * {
   border-right: none;
   margin-right: 40px;
 }
+.trip-stop__input._date {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  max-width: 140px;
+}
 .trip-stop__place {
   display: flex;
+}
+.trip-day {
+  position: relative;
+  margin-bottom: 40px;
 }
 .trip-map {
 /*padding: 40px;*/
