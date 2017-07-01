@@ -272,27 +272,27 @@ class IndexController extends RestController {
 
         $response = new Response();
 
-        $stops = Stop::find([
-            "trip_id = :id:",
+        $days = Day::find([
+            "stop_id = :id:",
             "order" => "created",
             "bind" => [
                 "id" => $id
             ]
         ]);
 
-        if ($stops->count() > 0) {
+        if ($days->count() > 0) {
             $response->setStatusCode(201, "Success");
             $response->setJsonContent(
                 array(
-                    'status' => $stops->count() . ' stops were found.',
-                    'data'   => $stops->toArray()
+                    'status' => $days->count() . ' stops were found.',
+                    'data'   => $days->toArray()
                 )
             );
         } else {
             $response->setStatusCode(404, "Not Found");
             $response->setJsonContent(
                 array(
-                    'status' => 'No stops were found.'
+                    'status' => 'No days were found.'
                 )
             );
         }
