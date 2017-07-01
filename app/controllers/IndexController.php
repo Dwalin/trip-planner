@@ -450,7 +450,7 @@ class IndexController extends RestController {
 
         $id           = $this->request->getPut("id");
         $name         = $this->request->getPut("name");
-        $location     = $this->request->getPut("date");
+        $date         = $this->request->getPut("date");
         $stop_id      = $this->request->getPut("stop_id");
 
         if ($id) {

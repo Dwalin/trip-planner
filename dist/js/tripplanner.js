@@ -337,7 +337,7 @@ $(function() {
 				success: function(data) {
 					log("Created new Day");
 					log(data);
-					self.stops.push(new dayVM(data.data));
+					self.days.push(new dayVM(data.data));
 				},
 				error: function(data) {
 					log("Could not create a new Day");
@@ -356,11 +356,33 @@ $(function() {
 
 		self.id        = ko.observable(data.id);
 		self.title     = ko.observable(data.title);
-		self.number    = ko.observable(data.number);
+		//self.number    = ko.observable(data.number);
 		self.date      = ko.observable(data.date);
 		self.complete  = ko.observable(data.completed);
 
 		self.plans     = ko.observableArray();
+
+		self.update = function() {
+
+			$.ajax({
+				dataType: "json",
+				type: "PUT",
+				data: {
+					id: self.id,
+					name: self.title,
+					date: self.date
+				},
+				url: "https://travel.done.report/api/stop/",
+				success: function(data) {
+					log("Updated a day.");
+					log(data);
+				},
+				error: function(data) {
+					log("Could not update a day");
+					log(data);
+				}
+			});
+		};
 
 		//render("https://travel.done.report/api/trip/stop/" + self.number() + "/", planVM, self.plans);
 
