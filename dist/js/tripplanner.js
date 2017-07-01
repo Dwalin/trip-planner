@@ -564,11 +564,9 @@ $(function() {
 	};
 
 	ko.bindingHandlers.datepicker = {
-
 		init: function(element) {
 			$(element).datepicker();
 		}
-
 	};
 	
 
