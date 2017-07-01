@@ -328,6 +328,13 @@ body * {
   padding: 40px;
   box-shadow: 0 10px 10px -14px rgba(0,0,0,0.25);
 }
+.trip-stop__input {
+  font-size: 24px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-right: 40px;
+}
 .trip-stop__place {
   display: flex;
 }
