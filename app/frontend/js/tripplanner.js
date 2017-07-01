@@ -347,7 +347,7 @@ $(function() {
 			});
 		};
 
-		render("https://travel.done.report/api/stop/" + self.id() + "/days/", dayVM, self.days);
+		render("https://travel.done.report/api/stop/" + self.id() + "/days/", dayVM, self.days, "Days ");
 
 
 	};
