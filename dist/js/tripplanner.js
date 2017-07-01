@@ -326,7 +326,27 @@ $(function() {
 			});
 		};
 
-		//render("https://travel.done.report/api/stop/" + self.id() + "/", dayVM, self.days);
+		self.addNewDay = function() {
+			$.ajax({
+				dataType: "json",
+				type: "PUT",
+				data: {
+					stop_id: self.id
+				},
+				url: "https://travel.done.report/api/day/",
+				success: function(data) {
+					log("Created new Day");
+					log(data);
+					self.stops.push(new dayVM(data.data));
+				},
+				error: function(data) {
+					log("Could not create a new Day");
+					log(data);
+				}
+			});
+		};
+
+		render("https://travel.done.report/api/stop/" + self.id() + "/days/", dayVM, self.days);
 
 
 	};
@@ -342,7 +362,7 @@ $(function() {
 
 		self.plans     = ko.observableArray();
 
-		render("https://travel.done.report/api/trip/stop/" + self.number() + "/", planVM, self.plans);
+		//render("https://travel.done.report/api/trip/stop/" + self.number() + "/", planVM, self.plans);
 
 
 	};
@@ -519,6 +539,14 @@ $(function() {
 
 
 		}
+	};
+
+	ko.bindingHandlers.datepicker = {
+
+		init: function(elemet) {
+			$(element).datepicker();
+		}
+
 	};
 	
 

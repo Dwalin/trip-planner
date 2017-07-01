@@ -263,8 +263,43 @@ class IndexController extends RestController {
         }
 
         return $response;
-
     }
+
+    /**
+     * @Get("/api/stop/{id:[0-9]+}/days/")
+     */
+    public function daysAction($id) {
+
+        $response = new Response();
+
+        $stops = Stop::find([
+            "trip_id = :id:",
+            "order" => "created",
+            "bind" => [
+                "id" => $id
+            ]
+        ]);
+
+        if ($stops->count() > 0) {
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => $stops->count() . ' stops were found.',
+                    'data'   => $stops->toArray()
+                )
+            );
+        } else {
+            $response->setStatusCode(404, "Not Found");
+            $response->setJsonContent(
+                array(
+                    'status' => 'No stops were found.'
+                )
+            );
+        }
+
+        return $response;
+    }
+
 
     /**
      * @Put("/api/trip/")
@@ -406,6 +441,94 @@ class IndexController extends RestController {
 
     }
 
+    /**
+     * @Put("/api/day/")
+     */
+    public function dayUpdateAction() {
+
+        $response = new Response();
+
+        $id           = $this->request->getPut("id");
+        $name         = $this->request->getPut("name");
+        $location     = $this->request->getPut("date");
+        $stop_id      = $this->request->getPut("stop_id");
+
+        if ($id) {
+            $day = Day::findFirst($id);
+            $day->name = $name;
+            $day->location = $location;
+        } else {
+            $day = new Day();
+            $day->stop_id = $stop_id;
+        }
+
+        if ($day->save() != false) {
+
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => 'Stop successfully updated.',
+                    'data'   => $day->toArray()
+                )
+            );
+
+        } else {
+            $response->setStatusCode(409, "Conflict");
+
+            $errors = array();
+            foreach ($day->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                array(
+                    'status'   => 'Could not create a stop.',
+                    'messages' => $errors
+                )
+            );
+        }
+
+        return $response;
+
+    }
+
+    /**
+     * @Delete("/api/day/{id:[0-9]+}")
+     */
+    public function dayDeleteAction($id) {
+
+        $response = new Response();
+        $day = Day::findFirst($id);
+
+        if ($day->delete() != false) {
+
+            $response->setStatusCode(201, "Success");
+            $response->setJsonContent(
+                array(
+                    'status' => 'Stop successfully deleted.',
+                    'data'   => $day->toArray()
+                )
+            );
+
+        } else {
+            $response->setStatusCode(409, "Conflict");
+
+            $errors = array();
+            foreach ($day->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                array(
+                    'status'   => 'Could not delete a stop.',
+                    'messages' => $errors
+                )
+            );
+        }
+
+        return $response;
+
+    }
 
 
 

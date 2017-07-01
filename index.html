@@ -146,6 +146,18 @@
 
 			<header class="trip-plan__header">
 
+				<input class="trip-stop__input mj-input"
+					   data-bind="value: title, event: {change: update}"
+					   type="text"
+					   placeholder="Type a name for this day"
+						>
+
+				<input class="trip-stop__input mj-input"
+					   data-bind="value: date, event: {change: update}, datepicker"
+					   type="text"
+					   placeholder="Type a name for this day"
+						>
+
 			</header>
 
 			<section class="trip-plan__info">
@@ -182,6 +194,12 @@
 		</article>
 
 		<!-- /ko -->
+
+		<section class="trip-plan__add">
+			<button class="trip-button mj-button" data-bind="event: {click: stop().addNewDay}">
+				Add a day
+			</button>
+		</section>
 
 
 	</article>
