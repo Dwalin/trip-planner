@@ -316,7 +316,7 @@ body * {
   width: 100%;
   max-width: 1200px;
   padding: 40px;
-  align-items: center;
+  align-items: flex-start;
 }
 .trip-plan__day {
   position: relative;

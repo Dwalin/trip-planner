@@ -456,7 +456,7 @@ class IndexController extends RestController {
         if ($id) {
             $day = Day::findFirst($id);
             $day->name = $name;
-            $day->location = $location;
+            $day->date = $date;
         } else {
             $day = new Day();
             $day->stop_id = $stop_id;
