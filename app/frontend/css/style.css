@@ -347,13 +347,15 @@ body * {
   margin-right: 40px;
 }
 .trip-direction__summary {
-  padding-left: 40px;
   display: flex;
   flex-direction: column;
 }
+.trip-direction__summary h3 {
+  margin: 0;
+}
 .trip-direction__summary>* {
-  font-size: 24px;
-  margin-bottom: 40px;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 .leaflet-routing-alternatives-container {
   display: none;
