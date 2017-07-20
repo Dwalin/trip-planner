@@ -120,7 +120,7 @@
 
 		<!-- ko foreach: days -->
 
-		<article class="trip-plan__day">
+		<article class="trip-plan__day trip-day">
 
 			<header class="trip-plan__header">
 
@@ -169,7 +169,7 @@
 
 			</section>
 
-			<button class="trip-button mj-button" data-bind="click: $parent.deleteDay">
+			<button class="trip-day__delete mj-button" data-bind="click: $parent.deleteDay">
 				Delete
 			</button>
 

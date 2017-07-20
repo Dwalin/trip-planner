@@ -347,6 +347,23 @@ body * {
 }
 .trip-stop__place {
   display: flex;
+  visibility: hidden;
+}
+.trip-stop__place:before {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background-color: #f00;
+  display: block;
+}
+.trip-day {
+  position: relative;
+}
+.trip-day__delete {
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  transform: translateY(-50%);
 }
 .trip-map {
 /*padding: 40px;*/

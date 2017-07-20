@@ -321,9 +321,30 @@ body * {
 
   &__place {
     display: flex;
+    visibility: hidden;
+
+    &:before {
+       content: '';
+       width: 32px;
+       height: 32px;
+       background-color: #ff0000;
+       display: block;
+     }
   }
 }
 
+
+.trip-day {
+
+  position: relative;
+
+  &__delete {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+  }
+}
 
 
 .trip-map {
